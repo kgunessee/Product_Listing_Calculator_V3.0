@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="main-style.css" />
+    <title>Product Listing Calculator</title>
+  </head>
+  <body>
+    <section id="listing-calculator-all">
+      <header>
+        <div id="title-and-version-info">
+          <h1>Product Listing Calculator</h1>
+          <p>Prices up to date as of...</p>
+        </div>
+        <div id="toolbar"></div>
+        <div id="toolbar-buttons"></div>
+      </header>
+      <main>
+        <!---------------COST PRICE CALCULATOR SECTION----------------->
+        <section id="cost-price-calc-container">
+          <h2>Cost Price Calculator</h2>
+          <div class="results-display cost-price-result">
+            <button class="calculate-button">CALCULATE</button>
+            <div>
+              <h3 class="result">434</h3>
+              <p class="result-ex-vat">434</p>
+            </div>
+          </div>
+
+          <div id="cost-price-input-section">
+            <div class="input-block cost-input">
+              <label for="cost-input">Cost Input</label>
+              <input type="number" id="cost-input" />
+            </div>
+            <button class="more-prices-button">More Prices</button>
+          </div>
+          <div id="extra-charge-packsize-section">
+            <div class="input-block extra-charges-input">
+              <label for="extra-charges">Extra Charges</label>
+              <input type="number" id="extra-charges" />
+            </div>
+
+            <div class="input-block packsize-input">
+              <label for="pack-size">Pack Size</label>
+              <input type="number" id="pack-size" />
+            </div>
+          </div>
+
+          <div id="courier-selection-section">
+            <button class="courier-btn">Evri</button>
+            <button class="courier-btn">Royal Mail</button>
+            <button class="courier-btn">Parcelforce</button>
+            <button class="courier-btn">DPD</button>
+          </div>
+        </section>
+
+        <!---------------THIRD PARTY CALCULATOR SECTION----------------->
+        <section id="third-party-price-calc-container">
+          <h2>Third Party Calculator</h2>
+          <div class="results-display third-party-result">
+            <button class="calculate-button">CALCULATE</button>
+            <h3 class="result"></h3>
+            <p class="result-ex-vat"></p>
+          </div>
+
+          <div class="input-block third-party-input">
+            <label for="third-party-input">Cost Input</label>
+            <input type="number" id="third-party-input" />
+          </div>
+
+          <div id="third-party-fees-section">
+            <div class="input-block third-party-fee-input">
+              <label for="third-party-fee">3rd Party Fee %</label>
+              <input type="number" id="third-party-fee" />
+            </div>
+            <div class="input-block promo-input">
+              <label for="promo">Promotion %</label>
+              <input type="number" id="promo" />
+            </div>
+          </div>
+        </section>
+
+        <!---------------VAT CALCULATOR SECTION----------------->
+        <section id="vat-calc-container">
+          <h2>VAT Calculator</h2>
+        </section>
+        <!---------------PERCENTAGE CALCULATOR SECTION----------------->
+        <section id="percentage-calc-container">
+          <h2>Percent Calculator</h2>
+        </section>
+      </main>
+    </section>
+  </body>
+  <script src="main-script.js"></script>
+</html>

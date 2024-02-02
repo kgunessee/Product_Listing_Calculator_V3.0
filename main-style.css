@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+
+:root {
+  /*DEFAULT FONT SIZES*/
+  --h1: 2.074rem;
+  --h2: 1.728rem;
+  --h3: 1.44rem;
+  --h4: 1.2rem;
+
+  /*DEFAULT COLOURS*/
+  --default-dark-color: #2c2c2c;
+  --default-light-color: #e9fff9;
+  --light-blue-accent-color: #9ed8db;
+  --mid-blue-accent-color: #467599;
+  --dark-blue-accent-color: #1d3354;
+
+  /*DEFAULT HOVER COLOURS*/
+  --hover-default-dark-color: #1e1e1e;
+  --hover-default-light-color: #c6d3ce;
+  --hover-light-blue-accent-color: #89babd;
+  --hover-mid-blue-accent-color: #5183a9;
+  --hover-dark-blue-accent-color: #28406b;
+
+  --default-border-radius: 1rem;
+  --default-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  --open-sans-font: "Open Sans", sans-serif;
+}
+
+/*------------------DEFAULT STYLES------------------*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--open-sans-font);
+  color: var(--default-light-color);
+}
+
+#listing-calculator-all {
+  margin: 0 auto;
+  width: 65%;
+}
+
+button {
+  padding: 0.3rem 1rem;
+  min-width: 8rem;
+  border: none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.10);
+}
+
+button:hover{
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+button:active{
+    background: rgba(255, 255, 255, 0.10);
+}
+
+main {
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(4, 1fr);
+  grid-gap: 1rem;
+}
+
+#cost-price-calc-container,
+#third-party-price-calc-container,
+#vat-calc-container,
+#percentage-calc-container {
+  border-radius: var(--default-border-radius);
+  box-shadow: var(--default-box-shadow);
+  padding: 1rem;
+}
+
+h2{
+    margin-bottom: 1rem;
+}
+
+.results-display{
+    background: var(--default-light-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    height: 4rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.results-display h3{
+    font-size: var(--h3);
+}
+
+.results-display h3, .results-display p{
+    color: var(--dark-blue-accent-color);
+    text-align: end;
+}
+
+.calculate-button{
+    background: #68b668;
+    height: 100%;
+    font-size: var(--h4);
+}
+
+.calculate-button:hover{
+    background: #71bd71;
+}
+
+.calculate-button:active{
+    background: #68b668;
+}
+
+/*------------------HEADER SECTION------------------*/
+
+header {
+  background: var(--default-light-color);
+  padding: 1rem;
+  border-radius: var(--default-border-radius);
+  box-shadow: var(--default-box-shadow);
+  margin-bottom: 1rem;
+}
+
+#title-and-version-info h1 {
+  font-size: var(--h1);
+}
+#title-and-version-info p {
+  font-size: 0.8rem;
+}
+
+#title-and-version-info h1,
+#title-and-version-info p {
+  color: var(--default-dark-color);
+}
+
+/*------------------COST PRICE CALCULATOR SECTION------------------*/
+
+#cost-price-calc-container {
+  background: var(--default-dark-color);
+  grid-column: span 2;
+  grid-row: span 3;
+}
+
+#cost-price-calc-container h2 {
+}
+
+/*------------------THIRD PARTY CALCULATOR SECTION------------------*/
+
+#third-party-price-calc-container {
+  background: var(--default-dark-color);
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/*------------------VAT CALCULATOR SECTION------------------*/
+
+#vat-calc-container {
+  grid-column: span 1;
+}
+/*------------------PERCENT CALCULATOR SECTION------------------*/
+
+#percentage-calc-container {
+  grid-column: span 1;
+}
