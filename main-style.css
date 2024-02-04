@@ -43,7 +43,7 @@
   width: 70%;
 }
 
-button{
+button {
   padding: 0.3rem 1rem;
   min-width: 8rem;
   border: none;
@@ -73,6 +73,14 @@ main {
   border-radius: var(--default-container-border-radius);
   box-shadow: var(--default-box-shadow);
   padding: 1rem;
+}
+
+input {
+  border-radius: var(--default-button-border-radius);
+  border: none;
+  background: #5b5b5b;
+  color: var(--default-light-color);
+  font-size: var(--h4);
 }
 
 h2 {
@@ -124,6 +132,13 @@ h2 {
   gap: 0.5rem;
 }
 
+hr {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 1rem 0;
+}
+
 /*------------------HEADER SECTION------------------*/
 
 header {
@@ -132,6 +147,11 @@ header {
   border-radius: var(--default-container-border-radius);
   box-shadow: var(--default-box-shadow);
   margin-bottom: 1rem;
+}
+
+header p {
+  color: var(--default-dark-color);
+  font-size: 0.8rem;
 }
 
 #title-and-version-info h1 {
@@ -146,7 +166,19 @@ header {
   color: var(--default-dark-color);
 }
 
+.vat-input-box {
+  width: 2rem;
+  height: fit-content;
+  background: #d5d5d5;
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--default-dark-color);
+  font-weight: 600;
+}
+
 /*------------------COST PRICE CALCULATOR SECTION------------------*/
+
+/*---USER INPUTS---*/
 
 #cost-price-calc-container {
   background: var(--default-dark-color);
@@ -158,17 +190,50 @@ header {
   margin-bottom: 1rem;
 }
 
-#cost-price-input-section {
-  display: flex;
-  justify-content: space-between;
-}
-
+#cost-price-input-section,
 #extra-charge-packsize-section {
   display: flex;
-  justify-content: space-between;
+  gap: 2rem;
+  align-items: end;
+  position: relative;
+  /*justify-content: space-between;*/
 }
 
-/*---COURIER MENU SECTION---*/
+.input-block input {
+  width: 100%;
+}
+
+.more-prices-button {
+  height: fit-content;
+  margin: 0;
+}
+
+/*---MORE PRICES---*/
+.more-prices-container {
+  position: absolute;
+  width: fit-content;
+  top: 0;
+  left: 100%;
+  background: var(--light-blue-accent-color);
+  padding: 1rem;
+  border-radius: var(--default-button-border-radius);
+  box-shadow: var(--default-box-shadow);
+}
+
+.more-price-block {
+  display: flex;
+  gap: 1rem;
+}
+
+.price {
+  width: 6rem;
+}
+
+.quantity {
+  width: 4rem;
+}
+
+/*---COURIER SELECTION MENU---*/
 
 #courier-selection-section {
   display: flex;
@@ -180,14 +245,14 @@ header {
   display: block;
 }
 
-.menu-indicator-container{
+.menu-indicator-container {
   position: relative;
 }
-.menu-indicator-container button{
+.menu-indicator-container button {
   width: 100%;
 }
 
-.menu-indicator-container .indicator{
+.menu-indicator-container .indicator {
   position: absolute;
   top: 0;
   right: 0;
@@ -240,7 +305,7 @@ header {
   display: grid;
 }
 
-/*---COURIER MENU SECTION END---*/
+/*---COURIER RESULTS---*/
 
 .courier-result-container {
   display: flex;
@@ -248,6 +313,9 @@ header {
   border: 2px solid var(--default-light-color);
   padding: 1rem 2rem;
   border-radius: var(--default-button-border-radius);
+}
+.courier-result {
+  width: 30%;
 }
 
 /*------------------THIRD PARTY CALCULATOR SECTION------------------*/

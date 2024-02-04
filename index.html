@@ -17,17 +17,25 @@
           <h1>Product Listing Calculator</h1>
           <p>Prices up to date as of...</p>
         </div>
-        <div id="toolbar"></div>
+        <div id="toolbar">
+          <p>
+            VAT:
+            <span><input value="20" type="number" class="vat-input-box" /></span
+            >%
+          </p>
+        </div>
         <div id="toolbar-buttons"></div>
       </header>
       <main>
         <!---------------COST PRICE CALCULATOR SECTION----------------->
         <section id="cost-price-calc-container">
           <h2>Cost Price Calculator</h2>
-          <div class="results-display cost-price-result">
-            <button class="calculate-button">CALCULATE</button>
+          <div class="results-display">
+            <button class="calculate-button cost-price-calc-button">
+              CALCULATE
+            </button>
             <div>
-              <h3 class="result">434</h3>
+              <h3 class="cost-price-result">434</h3>
               <p class="result-ex-vat">434</p>
             </div>
           </div>
@@ -39,17 +47,42 @@
                 <input type="number" id="cost-input" />
               </div>
               <button class="more-prices-button">More Prices</button>
+              <div class="more-prices-container">
+                <div class="more-price-block">
+                  <input value="0" type="number" class="price" />
+                  <input value="1" type="number" class="quantity" />
+                </div>
+                <div class="more-price-block">
+                  <input value="0" type="number" class="price" />
+                  <input value="1" type="number" class="quantity" />
+                </div>
+                <div class="more-price-block">
+                  <input value="0" type="number" class="price" />
+                  <input value="1" type="number" class="quantity" />
+                </div>
+                <div class="more-price-block">
+                  <input value="0" type="number" class="price" />
+                  <input value="1" type="number" class="quantity" />
+                </div>
+                <div class="more-price-block">
+                  <input value="0" type="number" class="price" />
+                  <input value="1" type="number" class="quantity" />
+                </div>
+                <div class="more-price-block">
+                  <input value="0" type="number" class="price" />
+                  <input value="1" type="number" class="quantity" />
+                </div>
+              </div>
             </div>
             <hr />
             <div id="extra-charge-packsize-section">
-              <div class="input-block extra-charges-input">
-                <label for="extra-charges">Extra Charges</label>
-                <input type="number" id="extra-charges" />
-              </div>
-
               <div class="input-block packsize-input">
                 <label for="pack-size">Pack Size</label>
-                <input type="number" id="pack-size" />
+                <input value="1" type="number" id="pack-size" />
+              </div>
+              <div class="input-block extra-charges-input">
+                <label for="extra-charges">Extra Charges</label>
+                <input value="0" type="number" id="extra-charges" />
               </div>
             </div>
             <hr />
@@ -60,6 +93,11 @@
                 <button class="courier-btn">Evri Parcel 48</button>
                 <button class="courier-btn">Evri Pack 24</button>
                 <button class="courier-btn">Evri Parcel 48</button>
+
+                <button class="courier-btn">Parcelforce 24</button>
+                <button class="courier-btn">Parcelforce 48</button>
+                <button class="courier-btn">Next-Day</button>
+
                 <div class="menu-indicator-container">
                   <button class="courier-btn std-48-btn">Royal Mail 48</button>
                   <p class="indicator">+</p>
@@ -94,10 +132,6 @@
                   <button class="courier-btn">Tracked 24 Large Letter</button>
                   <button class="courier-btn">Tracked 24 Parcel</button>
                 </div>
-
-                <button class="courier-btn">Parcelforce 24</button>
-                <button class="courier-btn">Parcelforce 48</button>
-                <button class="courier-btn">Next-Day</button>
               </div>
             </div>
             <div class="courier-result-container">
@@ -145,8 +179,5 @@
       <script src="main-script.js"></script>
       <script src="courier_select_and_prices.js"></script>
     </section>
-  <div class="test">
-
-  </div>
   </body>
 </html>

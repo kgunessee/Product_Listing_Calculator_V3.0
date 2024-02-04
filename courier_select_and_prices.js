@@ -105,13 +105,3 @@ const openStandard48Menu = () => {
   });
 };
 openStandard48Menu(); //Call the function to open the containers on click
-
-const test = document.querySelector(".test");
-for (const [key, value] of Object.entries(courierPrices.royalMail)) {
-  // const li = document.createElement("li");
-  // li.innerHTML = ;
-  // test.appendChild(li);
-  const para = document.createElement("li");
-  para.innerText = `${key}: ${value}`;
-  document.body.appendChild(para);
-}
