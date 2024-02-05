@@ -75,6 +75,7 @@ main {
   padding: 1rem;
 }
 
+
 input {
   border-radius: var(--default-button-border-radius);
   border: none;
@@ -262,7 +263,7 @@ header p {
 .rm48-services-container,
 .rm24-services-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   gap: 0.5rem;
 }
 
@@ -276,6 +277,11 @@ header p {
 .rm24-standard-button,
 .rm48-standard-button {
   position: relative;
+}
+
+.rm24-standard-button button,
+.rm48-standard-button button {
+  width: 100%;
 }
 
 .rm48-weight-brackets,
