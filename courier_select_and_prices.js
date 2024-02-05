@@ -1,3 +1,4 @@
+//Courier Prices Object
 const courierPrices = {
   royalMail: {
     "Royal Mail Tracked 48 Parcel": 2.75,
@@ -67,7 +68,7 @@ const courierPrices = {
     "Parcelforce Fuel Surcharge": 1.15, // 15%
   },
 
-  //Function to select courier - returns total price inc. surcharges and VAT.
+  //--------------Function to select courier - returns total price inc. surcharges and VAT-------------------//
   selectCourier(courierTarget) {
     //Get date & apply Royal Mail peak surcharge if within the date.
     let currentDate = new Date(); // Gets the current date
@@ -90,6 +91,8 @@ const courierPrices = {
     let courierResultService = document.querySelector(
       ".courier-result-container h3",
     );
+
+    //---------Switch statement to display info and set the price of the courier button clicked---------//
     switch (courierTarget) {
       case "Evri Package 48":
         courierResultInput.value = (
@@ -131,6 +134,43 @@ const courierPrices = {
           vat
         ).toFixed(2);
         courierResultService.innerHTML = "Parcelforce 48";
+        break;
+
+      case "Tracked 48 Large Letter":
+        courierResultInput.value = (
+          (this.royalMail["Royal Mail Tracked 48 Large Letter"] *
+            this.surcharges["Royal Mail Fuel Surcharge"] +
+            rmExtraSurcharges) *
+          vat
+        ).toFixed(2);
+        courierResultService.innerHTML = "Tracked 48 Large Letter";
+        break;
+      case "Tracked 48 Parcel":
+        courierResultInput.value = (
+          (this.royalMail["Royal Mail Tracked 48 Parcel"] *
+            this.surcharges["Royal Mail Fuel Surcharge"] +
+            rmExtraSurcharges) *
+          vat
+        ).toFixed(2);
+        courierResultService.innerHTML = "Royal Mail Tracked 48 Parcel";
+        break;
+      case "Tracked 24 Large Letter":
+        courierResultInput.value = (
+          (this.royalMail["Royal Mail Tracked 24 Large Letter"] *
+            this.surcharges["Royal Mail Fuel Surcharge"] +
+            rmExtraSurcharges) *
+          vat
+        ).toFixed(2);
+        courierResultService.innerHTML = "Tracked 24 Large Letter";
+        break;
+      case "Tracked 24 Parcel":
+        courierResultInput.value = (
+          (this.royalMail["Royal Mail Tracked 24 Parcel"] *
+            this.surcharges["Royal Mail Fuel Surcharge"] +
+            rmExtraSurcharges) *
+          vat
+        ).toFixed(2);
+        courierResultService.innerHTML = "Royal Mail Tracked 24 Parcel";
         break;
 
       case "STD48 (0-135g)":
@@ -215,6 +255,7 @@ const courierPrices = {
           "Royal Mail Standard 24 Large Letter (501-700g)";
         break;
     }
+
     return courierResultInput.valueAsNumber;
   },
 };

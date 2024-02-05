@@ -44,11 +44,15 @@
           <section id="input-section">
             <div id="cost-price-input-section">
               <div class="input-block cost-input">
-                <label for="cost-input">Cost Input</label>
+                <label for="cost-input">Cost Input (£)</label>
                 <input type="number" id="cost-input" />
               </div>
               <button class="more-prices-button">More Prices</button>
               <div class="more-prices-container">
+                <div>
+                  <h4>Price</h4>
+                  <h4>Quantity</h4>
+                </div>
                 <div class="more-price-block">
                   <input value="0" type="number" class="price" />
                   <input value="1" type="number" class="quantity" />
@@ -82,7 +86,7 @@
                 <input value="1" type="number" id="pack-size" />
               </div>
               <div class="input-block extra-charges-input">
-                <label for="extra-charges">Extra Charges</label>
+                <label for="extra-charges">Extra Charges (£)</label>
                 <input value="0" type="number" id="extra-charges" />
               </div>
             </div>
@@ -109,7 +113,9 @@
                 </div>
                 <div class="rm48-services-container">
                   <div class="rm48-standard-button">
-                    <button class="courier-btn">STD 48 Large Letter</button>
+                    <button class="courier-btn">
+                      Standard 48 Large Letter
+                    </button>
                     <div class="rm48-weight-brackets">
                       <button class="courier-btn">STD48 (0-135g)</button>
                       <button class="courier-btn">STD48 (136-250g)</button>
@@ -122,7 +128,9 @@
                 </div>
                 <div class="rm24-services-container">
                   <div class="rm24-standard-button">
-                    <button class="courier-btn">STD 24 Large Letter</button>
+                    <button class="courier-btn">
+                      Standard 24 Large Letter
+                    </button>
                     <div class="rm24-weight-brackets">
                       <button class="courier-btn">STD24 (0-135g)</button>
                       <button class="courier-btn">STD24 (136-250g)</button>
@@ -137,7 +145,7 @@
             </div>
             <div class="courier-result-container">
               <h3>Royal Mail Standard 48 Large Letter (0-135g)</h3>
-              <input type=number class="courier-result" />
+              <input type="number" class="courier-result" />
             </div>
           </section>
         </section>

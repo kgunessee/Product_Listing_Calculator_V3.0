@@ -24,7 +24,7 @@
 
   --default-container-border-radius: 1rem;
   --default-button-border-radius: 5px;
-  --default-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  --default-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.13);
   --open-sans-font: "Open Sans", sans-serif;
 }
 
@@ -40,7 +40,7 @@
 
 #listing-calculator-all {
   margin: 0 auto;
-  width: 70%;
+  width: 65%;
 }
 
 button {
@@ -72,7 +72,7 @@ main {
 #percentage-calc-container {
   border-radius: var(--default-container-border-radius);
   box-shadow: var(--default-box-shadow);
-  padding: 1rem;
+  padding: 1.5rem 2.5rem;
 }
 
 
@@ -109,9 +109,9 @@ h2 {
   text-align: end;
 }
 
-#input-section {
-  padding: 0 2rem;
-}
+/*#input-section {*/
+/*  padding: 0 2rem;*/
+/*}*/
 
 .calculate-button {
   background: #68b668;
@@ -202,23 +202,34 @@ header p {
 
 .input-block input {
   width: 100%;
+  padding: 0.2rem .5rem;
 }
 
 .more-prices-button {
   height: fit-content;
   margin: 0;
+  font-size: 1rem;
+  padding: 0.4rem 0;
 }
 
 /*---MORE PRICES---*/
 .more-prices-container {
   position: absolute;
   width: fit-content;
-  top: 0;
-  left: 100%;
+  top: 45%;
+  left: 77%;
   background: var(--light-blue-accent-color);
   padding: 1rem;
   border-radius: var(--default-button-border-radius);
   box-shadow: var(--default-box-shadow);
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.more-prices-container.active{
+  opacity: 1;
+  pointer-events: all;
 }
 
 .more-price-block {
@@ -226,12 +237,28 @@ header p {
   gap: 1rem;
 }
 
+.more-prices-container div:first-child{
+  display: flex;
+  gap: 5rem;
+  margin-bottom: .5rem;
+}
+
+.more-prices-container h4{
+  color: var(--default-dark-color);
+  font-size: var(--h4);
+}
+
+.more-price-block input{
+  padding: 0.2rem .5rem;
+  margin-bottom: .5rem;
+}
+
 .price {
-  width: 6rem;
+  width: 7rem;
 }
 
 .quantity {
-  width: 4rem;
+  width: 5rem;
 }
 
 /*---COURIER SELECTION MENU---*/
@@ -244,6 +271,8 @@ header p {
 }
 .courier-btn {
   display: block;
+  font-size: 1rem;
+  padding: 0.5rem;
 }
 
 .menu-indicator-container {
@@ -265,6 +294,7 @@ header p {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   gap: 0.5rem;
+
 }
 
 .rm48-services-container,
@@ -277,6 +307,7 @@ header p {
 .rm24-standard-button,
 .rm48-standard-button {
   position: relative;
+  /*padding: 0.5rem;*/
 }
 
 .rm24-standard-button button,
@@ -316,12 +347,21 @@ header p {
 .courier-result-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
   border: 2px solid var(--default-light-color);
   padding: 1rem 2rem;
   border-radius: var(--default-button-border-radius);
+  height: 6rem;
+}
+
+.courier-result-container h3{
+  color: var(--default-light-color);
 }
 .courier-result {
-  width: 30%;
+  min-width: 30%;
+  max-width: 30%;
+  padding: 0.2rem .5rem;
 }
 
 /*------------------THIRD PARTY CALCULATOR SECTION------------------*/
