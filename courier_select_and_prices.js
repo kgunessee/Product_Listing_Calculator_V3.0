@@ -1,18 +1,18 @@
 const courierPrices = {
   royalMail: {
-    "Royal Mail Tracked 48 Parcel": 2.75, // Royal Mail Tracked 48 (Flat Fee)
-    "Royal Mail Tracked 24 Parcel": 3.45, // Royal Mail Tracked 24 (Flat Fee)
-    "Royal Mail Tracked 48 Large Letter": 1.97, // Royal Mail Tracked 48 Large Letter (Flat Fee)
-    "Royal Mail Tracked 24 Large Letter": 2.21, // Royal Mail Tracked 24 Large Letter (Flat Fee)
-    "Royal Mail Standard 48 Large Letter (0-135g)": 1, // Royal Mail 48 LL (0-135g)
-    "Royal Mail Standard 48 Large Letter (136-250g)": 1.35, // Royal Mail 48 LL (136-250g)
-    "Royal Mail Standard 48 Large Letter (251-500g)": 1.6, // Royal Mail 48 LL (251-500g)
-    "Royal Mail Standard 48 Large Letter (501-700g)": 2.05, // Royal Mail 48 LL (501-700g)
-    "Royal Mail Standard 24 Large Letter (0-135g)": 1, // Royal Mail 24 LL (0-135g)
-    "Royal Mail Standard 24 Large Letter (136-250g)": 1.35, // Royal Mail 24 LL (146-250g)
-    "Royal Mail Standard 24 Large Letter (251-500g)": 1.6, // Royal Mail 24 LL (251-500g)
-    "Royal Mail Standard 24 Large Letter (501-700g)": 2.05, // Royal Mail 24 LL (501-750g)
-    "Royal Mail 2nd Class Letter": 0.77, // Royal Mail 2nd Class Letter
+    "Royal Mail Tracked 48 Parcel": 2.75,
+    "Royal Mail Tracked 24 Parcel": 3.45,
+    "Royal Mail Tracked 48 Large Letter": 1.97,
+    "Royal Mail Tracked 24 Large Letter": 2.21,
+    "Royal Mail Standard 48 Large Letter (0-135g)": 1,
+    "Royal Mail Standard 48 Large Letter (136-250g)": 1.35,
+    "Royal Mail Standard 48 Large Letter (251-500g)": 1.6,
+    "Royal Mail Standard 48 Large Letter (501-700g)": 2.05,
+    "Royal Mail Standard 24 Large Letter (0-135g)": 1.3,
+    "Royal Mail Standard 24 Large Letter (136-250g)": 1.8,
+    "Royal Mail Standard 24 Large Letter (251-500g)": 1.95,
+    "Royal Mail Standard 24 Large Letter (501-700g)": 2.55,
+    "Royal Mail 2nd Class Letter": 0.77,
   },
 
   evri: {
@@ -37,14 +37,14 @@ const courierPrices = {
     "DPD Collection Charge": 8.8,
 
     //--Express Pack--//
-    "DPD Express Pack Pre-10:30am": 20.55, // DPD ExpressPak Pre-10:30am
-    "DPD Express Pack Pre-12pm": 9.21, // DPD ExpressPak Pre-12pm
-    "DPD Express Pack Next-Day": 6.03, // DPD ExpressPak Next-Day
-    "DPD Express Pack Saturday Pre-10:30am": 23.39, // DPD ExpressPak Saturday Pre-10:30am
-    "DPD Express Pack Saturday Pre-12pm": 20.55, // DPD ExpressPak Saturday Pre-12pm
-    "DPD Express Pack Saturday": 14.18, // DPD ExpressPak Saturday
-    "DPD Express Pack Sunday Pre-12pm": 20.55, // DPD ExpressPak Sunday Pre-12pm
-    "DPD Express Pack Sunday": 14.18, // DPD ExpressPak Sunday
+    "DPD Express Pack Pre-10:30am": 20.55,
+    "DPD Express Pack Pre-12pm": 9.21,
+    "DPD Express Pack Next-Day": 6.03,
+    "DPD Express Pack Saturday Pre-10:30am": 23.39,
+    "DPD Express Pack Saturday Pre-12pm": 20.55,
+    "DPD Express Pack Saturday": 14.18,
+    "DPD Express Pack Sunday Pre-12pm": 20.55,
+    "DPD Express Pack Sunday": 14.18,
 
     //--Parcel--//
     "DPD Pre-10:30am": 20.55, // DPD Pre-10:30am
@@ -87,26 +87,135 @@ const courierPrices = {
       this.surcharges["Royal Mail Green Surcharge"] +
       this.surcharges["Royal Mail Peak Letter Surcharge"];
 
-    let courierResultInput = document.querySelector(".courier-result");
     let courierResultService = document.querySelector(
       ".courier-result-container h3",
     );
     switch (courierTarget) {
-      case "Evri Pack 48":
+      case "Evri Package 48":
         courierResultInput.value = (
           this.evri["Evri 48 Package (0-2kg)"] * vat
         ).toFixed(2);
+        courierResultService.innerHTML = "Evri 48 Package (0-2kg)";
         break;
-      case "Royal Mail 48":
+      case "Evri Parcel 48":
         courierResultInput.value = (
-          (this.royalMail["Royal Mail Tracked 48 Parcel"] *
+          this.evri["Evri 48 Parcel (2kg+)"] * vat
+        ).toFixed(2);
+        courierResultService.innerHTML = "Evri 48 Parcel (2kg+)";
+        break;
+      case "Evri Package 24":
+        courierResultInput.value = (
+          this.evri["Evri 24 Package (0-2kg)"] * vat
+        ).toFixed(2);
+        courierResultService.innerHTML = "Evri 24 Package (0-2kg)";
+        break;
+      case "Evri Parcel 24":
+        courierResultInput.value = (
+          this.evri["Evri 24 Parcel (2kg+)"] * vat
+        ).toFixed(2);
+        courierResultService.innerHTML = "Evri 24 Parcel (2kg+)";
+        break;
+
+      case "Parcelforce 24":
+        courierResultInput.value = (
+          this.parcelforce["Parcelforce 24"] *
+          this.surcharges["Parcelforce Fuel Surcharge"] *
+          vat
+        ).toFixed(2);
+        courierResultService.innerHTML = "Parcelforce 24";
+        break;
+      case "Parcelforce 48":
+        courierResultInput.value = (
+          this.parcelforce["Parcelforce 48"] *
+          this.surcharges["Parcelforce Fuel Surcharge"] *
+          vat
+        ).toFixed(2);
+        courierResultService.innerHTML = "Parcelforce 48";
+        break;
+
+      case "STD48 (0-135g)":
+        courierResultInput.value = (
+          (this.royalMail["Royal Mail Standard 48 Large Letter (0-135g)"] *
             this.surcharges["Royal Mail Fuel Surcharge"] +
             rmExtraSurcharges) *
           vat
         ).toFixed(2);
-        courierResultService.innerHTML = "Royal Mail Tracked 48 Parcel";
+        courierResultService.innerHTML =
+          "Royal Mail Standard 48 Large Letter (0-135g)";
+        break;
+      case "STD48 (136-250g)":
+        courierResultInput.value = (
+          (this.royalMail["Royal Mail Standard 48 Large Letter (136-250g)"] *
+            this.surcharges["Royal Mail Fuel Surcharge"] +
+            rmExtraSurcharges) *
+          vat
+        ).toFixed(2);
+        courierResultService.innerHTML =
+          "Royal Mail Standard 48 Large Letter (136-250g)";
+        break;
+      case "STD48 (251-500g)":
+        courierResultInput.value = (
+          (this.royalMail["Royal Mail Standard 48 Large Letter (251-500g)"] *
+            this.surcharges["Royal Mail Fuel Surcharge"] +
+            rmExtraSurcharges) *
+          vat
+        ).toFixed(2);
+        courierResultService.innerHTML =
+          "Royal Mail Standard 48 Large Letter (251-500g)";
+        break;
+      case "STD48 (501-700g)":
+        courierResultInput.value = (
+          (this.royalMail["Royal Mail Standard 48 Large Letter (501-700g)"] *
+            this.surcharges["Royal Mail Fuel Surcharge"] +
+            rmExtraSurcharges) *
+          vat
+        ).toFixed(2);
+        courierResultService.innerHTML =
+          "Royal Mail Standard 48 Large Letter (501-700g)";
+        break;
+
+      case "STD24 (0-135g)":
+        courierResultInput.value = (
+          (this.royalMail["Royal Mail Standard 24 Large Letter (0-135g)"] *
+            this.surcharges["Royal Mail Fuel Surcharge"] +
+            rmExtraSurcharges) *
+          vat
+        ).toFixed(2);
+        courierResultService.innerHTML =
+          "Royal Mail Standard 24 Large Letter (0-135g)";
+        break;
+      case "STD24 (136-250g)":
+        courierResultInput.value = (
+          (this.royalMail["Royal Mail Standard 24 Large Letter (136-250g)"] *
+            this.surcharges["Royal Mail Fuel Surcharge"] +
+            rmExtraSurcharges) *
+          vat
+        ).toFixed(2);
+        courierResultService.innerHTML =
+          "Royal Mail Standard 24 Large Letter (136-250g)";
+        break;
+      case "STD24 (251-500g)":
+        courierResultInput.value = (
+          (this.royalMail["Royal Mail Standard 24 Large Letter (251-500g)"] *
+            this.surcharges["Royal Mail Fuel Surcharge"] +
+            rmExtraSurcharges) *
+          vat
+        ).toFixed(2);
+        courierResultService.innerHTML =
+          "Royal Mail Standard 24 Large Letter (251-500g)";
+        break;
+      case "STD24 (501-700g)":
+        courierResultInput.value = (
+          (this.royalMail["Royal Mail Standard 24 Large Letter (501-700g)"] *
+            this.surcharges["Royal Mail Fuel Surcharge"] +
+            rmExtraSurcharges) *
+          vat
+        ).toFixed(2);
+        courierResultService.innerHTML =
+          "Royal Mail Standard 24 Large Letter (501-700g)";
         break;
     }
+    return courierResultInput.valueAsNumber;
   },
 };
 

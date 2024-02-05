@@ -1,16 +1,22 @@
 "use strict";
 const vat = document.querySelector(".vat-input-box").valueAsNumber / 100 + 1;
+let courierResultInput = document.querySelector(".courier-result");
 
-function costPriceCalculate(morePrices) {
+function costPriceCalculate(morePrices, courier) {
   const costInput = document.querySelector("#cost-input").valueAsNumber;
   const packSizeInput = document.querySelector("#pack-size").valueAsNumber;
   const extraChargesInput =
     document.querySelector("#extra-charges").valueAsNumber;
 
+  console.log(courier.valueAsNumber);
   console.log(
-    (costInput + morePrices) * vat * packSizeInput + extraChargesInput,
+    (costInput + morePrices) * vat * packSizeInput +
+      extraChargesInput +
+      courier,
   );
-  return (costInput + morePrices) * vat * packSizeInput + extraChargesInput;
+  return (
+    (costInput + morePrices) * vat * packSizeInput + extraChargesInput + courier
+  );
 }
 
 const costPriceCalculateButton = document.querySelector(
@@ -32,6 +38,6 @@ function morePrices() {
 
 costPriceCalculateButton.addEventListener("click", () => {
   const costPriceDisplayIncVat = document.querySelector(".cost-price-result");
-  const costPrice = costPriceCalculate(morePrices());
+  const costPrice = costPriceCalculate(morePrices(), courierResultInput);
   costPriceDisplayIncVat.innerHTML = `£${costPrice.toFixed(2)}`;
 });
