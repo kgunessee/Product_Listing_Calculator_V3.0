@@ -35,3 +35,5 @@ costPriceCalculateButton.addEventListener("click", () => {
   const costPrice = costPriceCalculate(morePrices());
   costPriceDisplayIncVat.innerHTML = `£${costPrice.toFixed(2)}`;
 });
+
+const test;
