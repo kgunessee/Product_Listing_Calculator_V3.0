@@ -281,30 +281,37 @@ const openStandard48Menu = () => {
   const rm24ServicesContainer = document.querySelector(
     ".rm24-services-container",
   );
-  const indicator = document.querySelectorAll(".indicator"); // The + & - Symbols
-  let rm48Indicator = indicator[0];
-  let rm24Indicator = indicator[1];
+  const indicator = document.querySelectorAll(".indicator-centre"); // The + & - Symbols
+  const rm48Indicator = indicator[0];
+  const rm24Indicator = indicator[1];
 
   standard48Button.addEventListener("click", () => {
     rm48ServicesContainer.classList.toggle("active");
     rm24ServicesContainer.classList.remove("active");
-    if (rm48Indicator.innerHTML === "+") {
-      // Toggles the indicator between + and -. Sets default to other indicators.
-      rm48Indicator.innerHTML = "-";
+    if (!rm48Indicator.classList.contains("active")) {
+      // Toggles the indicator between > and v. Sets default to other indicators.
+      rm48Indicator.classList.add("active");
+      standard48Button.style.background = "rgba(220, 50, 50, 0.8)";
     } else {
-      rm48Indicator.innerHTML = "+";
+      rm48Indicator.classList.remove("active");
+      standard48Button.style.background = "rgba(220, 50, 50, 0.4)";
     }
-    rm24Indicator.innerHTML = "+";
+    rm24Indicator.classList.remove("active");
+    standard24Button.style.background = "rgba(220, 50, 50, 0.4)";
   });
   standard24Button.addEventListener("click", () => {
     rm24ServicesContainer.classList.toggle("active");
     rm48ServicesContainer.classList.remove("active");
-    if (rm24Indicator.innerHTML === "+") {
-      rm24Indicator.innerHTML = "-";
+    if (!rm24Indicator.classList.contains("active")) {
+      // Toggles the indicator between > and v. Sets default to other indicators.
+      rm24Indicator.classList.add("active");
+      standard24Button.style.background = "rgba(220, 50, 50, 0.8)";
     } else {
-      rm24Indicator.innerHTML = "+";
+      rm24Indicator.classList.remove("active");
+      standard24Button.style.background = "rgba(220, 50, 50, 0.4)";
     }
-    rm48Indicator.innerHTML = "+";
+    rm48Indicator.classList.remove("active");
+    standard48Button.style.background = "rgba(220, 50, 50, 0.4)";
   });
 };
 openStandard48Menu(); //Call the function to open the containers on click

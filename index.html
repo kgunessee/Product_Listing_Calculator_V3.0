@@ -8,6 +8,10 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
     <link rel="stylesheet" href="main-style.css" />
     <title>Product Listing Calculator</title>
   </head>
@@ -30,6 +34,7 @@
       <main>
         <!---------------COST PRICE CALCULATOR SECTION----------------->
         <section id="cost-price-calc-container">
+          <div class="background-blur"></div>
           <h2>Cost Price Calculator</h2>
           <div class="results-display">
             <button class="calculate-button cost-price-calc-button">
@@ -48,35 +53,26 @@
                 <input type="number" id="cost-input" />
               </div>
               <button class="more-prices-button">More Prices</button>
-              <div class="more-prices-container">
+            </div>
+
+            <div class="more-prices-container">
+              <hr />
+              <div class="more-prices-title">
                 <div>
-                  <h4>Price</h4>
+                  <h4>Price (£)</h4>
                   <h4>Quantity</h4>
                 </div>
-                <div class="more-price-block">
-                  <input value="0" type="number" class="price" />
-                  <input value="1" type="number" class="quantity" />
-                </div>
-                <div class="more-price-block">
-                  <input value="0" type="number" class="price" />
-                  <input value="1" type="number" class="quantity" />
-                </div>
-                <div class="more-price-block">
-                  <input value="0" type="number" class="price" />
-                  <input value="1" type="number" class="quantity" />
-                </div>
-                <div class="more-price-block">
-                  <input value="0" type="number" class="price" />
-                  <input value="1" type="number" class="quantity" />
-                </div>
-                <div class="more-price-block">
-                  <input value="0" type="number" class="price" />
-                  <input value="1" type="number" class="quantity" />
-                </div>
-                <div class="more-price-block">
-                  <input value="0" type="number" class="price" />
-                  <input value="1" type="number" class="quantity" />
-                </div>
+                <button class="add-extra-price-button">Add Price</button>
+              </div>
+
+              <div class="more-price-block">
+                <input value="0" type="number" class="price" />
+                <input value="1" type="number" class="quantity" />
+                <!-----------------Remove button is added to each new block created. Has the class "remove-button".------>
+              </div>
+              <div class="more-price-block">
+                <input value="0" type="number" class="price" />
+                <input value="1" type="number" class="quantity" />
               </div>
             </div>
             <hr />
@@ -94,52 +90,55 @@
             <div id="courier-selection-section">
               <h4>Courier Prices</h4>
               <div class="courier-menu">
-                <button class="courier-btn">Evri Package 48</button>
-                <button class="courier-btn">Evri Parcel 48</button>
-                <button class="courier-btn">Evri Package 24</button>
-                <button class="courier-btn">Evri Parcel 24</button>
+                <button class="courier-btn evri-btn">Evri Package 48</button>
+                <button class="courier-btn evri-btn">Evri Parcel 48</button>
+                <button class="courier-btn evri-btn">Evri Package 24</button>
+                <button class="courier-btn evri-btn">Evri Parcel 24</button>
 
-                <button class="courier-btn">Parcelforce 24</button>
-                <button class="courier-btn">Parcelforce 48</button>
-                <button class="courier-btn">Next-Day</button>
+                <button class="courier-btn pf-btn">Parcelforce 24</button>
+                <button class="courier-btn pf-btn">Parcelforce 48</button>
+                <button class="courier-btn dpd-btn">Next-Day</button>
 
                 <div class="menu-indicator-container">
-                  <button class="courier-btn std-48-btn">Royal Mail 48</button>
-                  <p class="indicator">+</p>
+                  <button class="courier-btn std-48-btn rm-btn">Royal Mail 48</button>
+                  <!--                  <i class="gg-arrow-right indicator"></i>-->
+                  <span class="material-symbols-outlined indicator-centre"> chevron_right </span>
                 </div>
                 <div class="menu-indicator-container">
-                  <button class="courier-btn std-24-btn">Royal Mail 24</button>
-                  <p class="indicator">+</p>
+                  <button class="courier-btn std-24-btn rm-btn">Royal Mail 24</button>
+                  <span class="material-symbols-outlined indicator-centre"> chevron_right </span>
                 </div>
                 <div class="rm48-services-container">
                   <div class="rm48-standard-button">
-                    <button class="courier-btn">
+                    <button class="courier-btn rm-btn">
                       Standard 48 Large Letter
                     </button>
+                    <span class="material-symbols-outlined indicator-bottom"> chevron_right </span>
                     <div class="rm48-weight-brackets">
-                      <button class="courier-btn">STD48 (0-135g)</button>
-                      <button class="courier-btn">STD48 (136-250g)</button>
-                      <button class="courier-btn">STD48 (251-500g)</button>
-                      <button class="courier-btn">STD48 (501-700g)</button>
+                      <button class="courier-btn rm-btn">STD48 (0-135g)</button>
+                      <button class="courier-btn rm-btn">STD48 (136-250g)</button>
+                      <button class="courier-btn rm-btn">STD48 (251-500g)</button>
+                      <button class="courier-btn rm-btn">STD48 (501-700g)</button>
                     </div>
                   </div>
-                  <button class="courier-btn">Tracked 48 Large Letter</button>
-                  <button class="courier-btn">Tracked 48 Parcel</button>
+                  <button class="courier-btn rm-btn">Tracked 48 Large Letter</button>
+                  <button class="courier-btn rm-btn">Tracked 48 Parcel</button>
                 </div>
                 <div class="rm24-services-container">
                   <div class="rm24-standard-button">
-                    <button class="courier-btn">
+                    <button class="courier-btn rm-btn">
                       Standard 24 Large Letter
                     </button>
+                    <span class="material-symbols-outlined indicator-bottom"> chevron_right </span>
                     <div class="rm24-weight-brackets">
-                      <button class="courier-btn">STD24 (0-135g)</button>
-                      <button class="courier-btn">STD24 (136-250g)</button>
-                      <button class="courier-btn">STD24 (251-500g)</button>
-                      <button class="courier-btn">STD24 (501-700g)</button>
+                      <button class="courier-btn rm-btn">STD24 (0-135g)</button>
+                      <button class="courier-btn rm-btn">STD24 (136-250g)</button>
+                      <button class="courier-btn rm-btn">STD24 (251-500g)</button>
+                      <button class="courier-btn rm-btn">STD24 (501-700g)</button>
                     </div>
                   </div>
-                  <button class="courier-btn">Tracked 24 Large Letter</button>
-                  <button class="courier-btn">Tracked 24 Parcel</button>
+                  <button class="courier-btn rm-btn">Tracked 24 Large Letter</button>
+                  <button class="courier-btn rm-btn">Tracked 24 Parcel</button>
                 </div>
               </div>
             </div>
@@ -148,6 +147,7 @@
               <input type="number" class="courier-result" />
             </div>
           </section>
+
         </section>
 
         <!---------------THIRD PARTY CALCULATOR SECTION----------------->
@@ -174,6 +174,7 @@
               <input type="number" id="promo" />
             </div>
           </div>
+
         </section>
 
         <!---------------VAT CALCULATOR SECTION----------------->

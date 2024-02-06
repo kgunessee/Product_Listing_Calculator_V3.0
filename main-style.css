@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
+@import url("https://unpkg.com/css.gg@2.0.0/icons/css/arrow-right.css");
 
 :root {
   /*DEFAULT FONT SIZES*/
@@ -8,7 +9,7 @@
   --h4: 1.2rem;
 
   /*DEFAULT COLOURS*/
-  --default-dark-color: #2c2c2c;
+  --default-dark-color: #212121;
   --default-light-color: #e9fff9;
   --light-blue-accent-color: #9ed8db;
   --mid-blue-accent-color: #467599;
@@ -18,9 +19,10 @@
   /*DEFAULT HOVER COLOURS*/
   --hover-default-dark-color: #1e1e1e;
   --hover-default-light-color: #c6d3ce;
-  --hover-light-blue-accent-color: #89babd;
+  --hover-light-blue-accent-color: #aee7ea;
   --hover-mid-blue-accent-color: #5183a9;
   --hover-dark-blue-accent-color: #28406b;
+  --hover-red-accent-color: #de5157;
 
   --default-container-border-radius: 1rem;
   --default-button-border-radius: 5px;
@@ -38,6 +40,18 @@
   color: var(--default-light-color);
 }
 
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+body {
+  overflow-y: scroll;
+}
+
 #listing-calculator-all {
   margin: 0 auto;
   width: 65%;
@@ -49,6 +63,7 @@ button {
   border: none;
   border-radius: var(--default-button-border-radius);
   background: rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
 }
 
 button:hover {
@@ -73,8 +88,20 @@ main {
   border-radius: var(--default-container-border-radius);
   box-shadow: var(--default-box-shadow);
   padding: 1.5rem 2.5rem;
+  position: relative;
 }
 
+.background-blur {
+  position: absolute;
+  height: 70%;
+  width: 70%;
+  border-radius: 50%;
+  background: rgba(27, 101, 131, 0.68);
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  filter: blur(100px);
+}
 
 input {
   border-radius: var(--default-button-border-radius);
@@ -109,22 +136,18 @@ h2 {
   text-align: end;
 }
 
-/*#input-section {*/
-/*  padding: 0 2rem;*/
-/*}*/
-
 .calculate-button {
   background: #68b668;
   height: 100%;
   font-size: var(--h4);
-}
 
-.calculate-button:hover {
-  background: #71bd71;
-}
+  &:hover {
+    background: #71bd71;
+  }
 
-.calculate-button:active {
-  background: #68b668;
+  &:active {
+    background: #68b668;
+  }
 }
 
 .input-block {
@@ -147,12 +170,12 @@ header {
   padding: 1rem;
   border-radius: var(--default-container-border-radius);
   box-shadow: var(--default-box-shadow);
-  margin-bottom: 1rem;
-}
+  margin: 1rem 0;
 
-header p {
-  color: var(--default-dark-color);
-  font-size: 0.8rem;
+  & p {
+    color: var(--default-dark-color);
+    font-size: 0.8rem;
+  }
 }
 
 #title-and-version-info h1 {
@@ -185,10 +208,10 @@ header p {
   background: var(--default-dark-color);
   grid-column: span 2;
   grid-row: span 3;
-}
 
-#cost-price-calc-container > div {
-  margin-bottom: 1rem;
+  > div {
+    margin-bottom: 1rem;
+  }
 }
 
 #cost-price-input-section,
@@ -197,13 +220,16 @@ header p {
   gap: 2rem;
   align-items: end;
   position: relative;
+  z-index: 2;
   /*justify-content: space-between;*/
 }
 
 .input-block input {
   width: 100%;
-  padding: 0.2rem .5rem;
+  padding: 0.2rem 0.5rem;
 }
+
+/*---MORE PRICES---*/
 
 .more-prices-button {
   height: fit-content;
@@ -212,53 +238,85 @@ header p {
   padding: 0.4rem 0;
 }
 
-/*---MORE PRICES---*/
-.more-prices-container {
-  position: absolute;
-  width: fit-content;
-  top: 45%;
-  left: 77%;
-  background: var(--light-blue-accent-color);
-  padding: 1rem;
-  border-radius: var(--default-button-border-radius);
-  box-shadow: var(--default-box-shadow);
-  z-index: 2;
-  opacity: 0;
-  pointer-events: none;
+.more-prices-button.active {
+  background: var(--mid-blue-accent-color);
+  &:hover {
+    background: var(--hover-mid-blue-accent-color);
+  }
+
+  &:active {
+    background: var(--mid-blue-accent-color);
+  }
 }
 
-.more-prices-container.active{
-  opacity: 1;
-  pointer-events: all;
+.more-prices-container {
+  display: none;
+}
+
+.more-prices-container.active {
+  display: block;
+}
+
+.more-prices-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+
+  > div {
+    display: flex;
+    gap: 4.4rem;
+  }
+
+  & h4 {
+    color: var(--default-light-color);
+    font-weight: 400;
+    font-size: 1rem;
+  }
+}
+
+.add-extra-price-button {
+  background: var(--light-blue-accent-color);
+  color: var(--default-dark-color);
+
+  &:hover {
+    background: var(--hover-light-blue-accent-color);
+  }
+
+  &:active {
+    background: var(--light-blue-accent-color);
+  }
 }
 
 .more-price-block {
   display: flex;
   gap: 1rem;
+
+  & input {
+    padding: 0 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  & .remove-button {
+    background: var(--red-accent-color);
+    text-align: center;
+    font-size: 0.8rem;
+    height: 100%;
+    min-width: 0;
+    width: fit-content;
+  }
 }
 
-.more-prices-container div:first-child{
-  display: flex;
-  gap: 5rem;
-  margin-bottom: .5rem;
+.remove-button:hover {
+  background: var(--hover-red-accent-color);
+}
+.remove-button:active {
+  background: var(--red-accent-color);
 }
 
-.more-prices-container h4{
-  color: var(--default-dark-color);
-  font-size: var(--h4);
-}
-
-.more-price-block input{
-  padding: 0.2rem .5rem;
-  margin-bottom: .5rem;
-}
-
-.price {
-  width: 7rem;
-}
-
+.price,
 .quantity {
-  width: 5rem;
+  width: 7rem;
 }
 
 /*---COURIER SELECTION MENU---*/
@@ -271,21 +329,68 @@ header p {
 }
 .courier-btn {
   display: block;
-  font-size: 1rem;
   padding: 0.5rem;
+}
+
+/*---COURIER BUTTON COLOURS---*/
+.evri-btn {
+  background: rgba(0, 123, 196, 0.4);
+  &:hover {
+    background: rgba(0, 123, 196, 0.6);
+  }
+  &:active {
+    background: rgba(0, 123, 196, 0.4);
+  }
+}
+.pf-btn {
+  background: rgba(160, 0, 0, 0.4);
+  &:hover {
+    background: rgba(160, 0, 0, 0.6);
+  }
+  &:active {
+    background: rgba(160, 0, 0, 0.4);
+  }
+}
+.dpd-btn {
+  background: rgba(220, 0, 50, 0.4);
+  &:hover {
+    background: rgba(220, 0, 50, 0.6);
+  }
+  &:active {
+    background: rgba(220, 0, 50, 0.4);
+  }
+}
+.std-48-btn,
+.std-24-btn,
+.rm-btn {
+  background: rgba(220, 50, 50, 0.4);
+  &:hover {
+    background: rgba(220, 50, 50, 0.6);
+  }
+  &:active {
+    background: rgba(220, 50, 50, 0.4);
+  }
 }
 
 .menu-indicator-container {
   position: relative;
-}
-.menu-indicator-container button {
-  width: 100%;
+
+  & button {
+    width: 100%;
+  }
 }
 
-.menu-indicator-container .indicator {
+.indicator-centre {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 17%;
+  right: 5%;
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.5);
+  transition: 0.2s ease-in-out;
+}
+
+.indicator-centre.active {
+  transform: rotate(90deg);
 }
 
 .courier-menu,
@@ -294,7 +399,6 @@ header p {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   gap: 0.5rem;
-
 }
 
 .rm48-services-container,
@@ -304,10 +408,23 @@ header p {
   grid-column: 1 / 4;
 }
 
+.indicator-bottom {
+  position: absolute;
+  bottom: 0;
+  right: 5%;
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.5);
+  transition: 0.2s ease-in-out;
+}
+
+.rm24-standard-button:hover .indicator-bottom,
+.rm48-standard-button:hover .indicator-bottom {
+  right: 0;
+}
+
 .rm24-standard-button,
 .rm48-standard-button {
   position: relative;
-  /*padding: 0.5rem;*/
 }
 
 .rm24-standard-button button,
@@ -353,15 +470,16 @@ header p {
   padding: 1rem 2rem;
   border-radius: var(--default-button-border-radius);
   height: 6rem;
+
+  & h3 {
+    color: var(--default-light-color);
+  }
 }
 
-.courier-result-container h3{
-  color: var(--default-light-color);
-}
 .courier-result {
   min-width: 30%;
   max-width: 30%;
-  padding: 0.2rem .5rem;
+  padding: 0.2rem 0.5rem;
 }
 
 /*------------------THIRD PARTY CALCULATOR SECTION------------------*/
