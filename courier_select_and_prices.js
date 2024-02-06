@@ -50,8 +50,8 @@ const courierPrices = {
     //--Parcel--//
     "DPD Pre-10:30am": 20.55, // DPD Pre-10:30am
     "DPD Pre-12pm": 9.21, // DPD Pre-12pm
-    "DPD Next-Day": 6.38, // DPD Next-Day
-    "DPD Two-Day": 6.38, //DPD Two-Day
+    "DPD Next-day": 6.38, // DPD Next-Day
+    "DPD Two-day": 6.38, //DPD Two-Day
     "DPD Saturday Pre-10:30am": 23.39, // DPD Saturday Pre-10:30am
     "DPD Saturday Pre-12pm": 20.55, // DPD Saturday Pre-12pm
     "DPD Saturday": 14.18, // DPD Saturday
@@ -134,6 +134,15 @@ const courierPrices = {
           vat
         ).toFixed(2);
         courierResultService.innerHTML = "Parcelforce 48";
+        break;
+
+      case "DPD Next-day":
+        courierResultInput.value = (
+          (this.dpd["DPD Next-day"] * this.surcharges["DPD Fuel Surcharge"] +
+            this.surcharges["DPD Drive Shortage Surcharge"]) *
+          vat
+        ).toFixed(2);
+        courierResultService.innerHTML = "DPD Next-day";
         break;
 
       case "Tracked 48 Large Letter":
@@ -285,6 +294,7 @@ const openStandard48Menu = () => {
   const rm48Indicator = indicator[0];
   const rm24Indicator = indicator[1];
 
+  //---------CLICK EVENTS---------------------------------------------------------------//
   standard48Button.addEventListener("click", () => {
     rm48ServicesContainer.classList.toggle("active");
     rm24ServicesContainer.classList.remove("active");
@@ -314,4 +324,5 @@ const openStandard48Menu = () => {
     standard48Button.style.background = "rgba(220, 50, 50, 0.4)";
   });
 };
+//-----------------------------------------------------------------------------------------//
 openStandard48Menu(); //Call the function to open the containers on click

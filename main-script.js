@@ -39,8 +39,10 @@ costPriceCalculateButton.addEventListener("click", () => {
   const costPriceDisplayExVat = document.querySelector(".result-ex-vat");
   const costPrice = costPriceCalculate(morePrices(), courierResultInput);
 
-  costPriceDisplayIncVat.innerHTML = `£${costPrice.toFixed(2)}`;
-  costPriceDisplayExVat.innerHTML = `£${calcExVat(costPrice).toFixed(2)}`;
+  costPriceDisplayIncVat.innerHTML = `£${costPrice.toFixed(2)} inc.VAT`;
+  costPriceDisplayExVat.innerHTML = `£${calcExVat(costPrice).toFixed(
+    2,
+  )} excl.VAT`;
 });
 
 //----------SHOW MORE PRICES SECTION-------------//
@@ -54,6 +56,7 @@ function showMorePrices() {
 }
 showMorePrices();
 
+//--------ADD AND REMOVE MORE PRICES--------//
 function addAndRemoveMorePrices() {
   const addButton = document.querySelector(".add-extra-price-button");
   const morePricesContainer = document.querySelector(".more-prices-container");

@@ -10,7 +10,7 @@
 
   /*DEFAULT COLOURS*/
   --default-dark-color: #212121;
-  --default-light-color: #e9fff9;
+  --default-light-color: rgb(233, 255, 249);
   --light-blue-accent-color: #9ed8db;
   --mid-blue-accent-color: #467599;
   --dark-blue-accent-color: #1d3354;
@@ -106,7 +106,7 @@ main {
 input {
   border-radius: var(--default-button-border-radius);
   border: none;
-  background: #5b5b5b;
+  background: rgba(255, 255, 255, 0.2);
   color: var(--default-light-color);
   font-size: var(--h4);
 }
@@ -116,7 +116,7 @@ h2 {
 }
 
 .results-display {
-  background: var(--default-light-color);
+  background: rgba(233, 255, 249, 0.7);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -208,10 +208,29 @@ header {
   background: var(--default-dark-color);
   grid-column: span 2;
   grid-row: span 3;
+  overflow: hidden;
 
   > div {
     margin-bottom: 1rem;
   }
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -10%;
+    right: -10%;
+    background: rgba(66, 156, 210, 0.2);
+    height: 70%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    filter: blur(100px);
+    -webkit-filter: blur(100px);
+  }
+}
+
+#input-section {
+  position: relative;
+  z-index: 3;
 }
 
 #cost-price-input-section,
@@ -220,7 +239,7 @@ header {
   gap: 2rem;
   align-items: end;
   position: relative;
-  z-index: 2;
+
   /*justify-content: space-between;*/
 }
 
@@ -343,12 +362,12 @@ header {
   }
 }
 .pf-btn {
-  background: rgba(160, 0, 0, 0.4);
+  background: rgba(183, 17, 17, 0.5);
   &:hover {
-    background: rgba(160, 0, 0, 0.6);
+    background: rgba(183, 26, 26, 0.6);
   }
   &:active {
-    background: rgba(160, 0, 0, 0.4);
+    background: rgba(183, 17, 17, 0.5);
   }
 }
 .dpd-btn {
@@ -480,6 +499,7 @@ header {
   min-width: 30%;
   max-width: 30%;
   padding: 0.2rem 0.5rem;
+  position: relative;
 }
 
 /*------------------THIRD PARTY CALCULATOR SECTION------------------*/

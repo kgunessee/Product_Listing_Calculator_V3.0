@@ -3,4 +3,9 @@
 /workspace.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+/inspectionProfiles/Project_Default.xml
+/jsLinters/eslint.xml
+/misc.xml
+/prettier.xml
+/Product Listing Calculator V3.0.iml
 /prettier.xml
