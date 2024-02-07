@@ -42,12 +42,10 @@ function showMorePrices() {
   const showPricesButton = document.querySelector(".more-prices-button");
   showPricesButton.addEventListener("click", () => {
     morePricesContainer.classList.toggle("active");
-    const showPriceText = "Show Extra Prices";
-    const hidePriceText = "Hide Extra Prices";
     if (morePricesContainer.classList.contains("active")) {
-      showPricesButton.innerHTML = hidePriceText;
+      showPricesButton.innerHTML = "Hide Extra Prices";
     } else {
-      showPricesButton.innerHTML = showPriceText;
+      showPricesButton.innerHTML = "Show Extra Prices";
     }
   });
 }
@@ -67,6 +65,7 @@ function morePrices() {
   //----Adds border and changes background of the more prices button to indicate if there is a price in there more than 0----//
   morePrices.forEach((price) => {
     price.addEventListener("input", () => {
+      //Adjusts on more price input change
       const inputList = Array.from(morePrices);
       const isMoreThanZero = inputList.some((e) => {
         return e.valueAsNumber > 0;
