@@ -3,6 +3,25 @@ const vat = document.querySelector(".vat-input-box").valueAsNumber / 100 + 1;
 const vatAsPercentage = Math.ceil((vat - 1) * 100);
 const courierResultInput = document.querySelector(".courier-result");
 
+function setModuleHeight() {
+  const costPriceCalcHeight = document
+    .querySelector("#cost-price-calc-container")
+    .getBoundingClientRect().height;
+
+  const thirdPartyCalcContainer = document.querySelector(
+    "#third-party-price-calc-container",
+  );
+
+  thirdPartyCalcContainer.style.setProperty(
+    "--max-height",
+    `${costPriceCalcHeight}px`,
+  );
+
+  const toolsContainer = document.querySelector("#tools-container");
+  toolsContainer.style.setProperty("--max-height", `${costPriceCalcHeight}px`);
+}
+setModuleHeight();
+
 //-------------COST PRICE MAIN CALCULATION-------------//
 function costPriceCalculate(morePrices, courier) {
   const costInput = document.querySelector("#cost-input").valueAsNumber;
@@ -17,6 +36,23 @@ function costPriceCalculate(morePrices, courier) {
   return total;
 }
 
+//----------SHOW MORE PRICES SECTION-------------//
+function showMorePrices() {
+  const morePricesContainer = document.querySelector(".more-prices-container");
+  const showPricesButton = document.querySelector(".more-prices-button");
+  showPricesButton.addEventListener("click", () => {
+    morePricesContainer.classList.toggle("active");
+    const showPriceText = "Show Extra Prices";
+    const hidePriceText = "Hide Extra Prices";
+    if (morePricesContainer.classList.contains("active")) {
+      showPricesButton.innerHTML = hidePriceText;
+    } else {
+      showPricesButton.innerHTML = showPriceText;
+    }
+  });
+}
+showMorePrices();
+
 function morePrices() {
   const morePrices = document.querySelectorAll(".price");
   const morePricesQuantity = document.querySelectorAll(".quantity");
@@ -27,8 +63,27 @@ function morePrices() {
     }
     total += price.valueAsNumber * morePricesQuantity[index].valueAsNumber;
   });
+
+  //----Adds border and changes background of the more prices button to indicate if there is a price in there more than 0----//
+  morePrices.forEach((price) => {
+    price.addEventListener("input", () => {
+      const inputList = Array.from(morePrices);
+      const isMoreThanZero = inputList.some((e) => {
+        return e.valueAsNumber > 0;
+      });
+      const showPricesButton = document.querySelector(".more-prices-button");
+      if (isMoreThanZero) {
+        showPricesButton.style.border = "1px solid rgba(255, 255, 255, 0.5)";
+        showPricesButton.style.background = "#1d3354";
+      } else {
+        showPricesButton.style.border = "none";
+        showPricesButton.style.background = "rgba(255, 255, 255, 0.1)";
+      }
+    });
+  });
   return total;
 }
+morePrices();
 
 //----------CALCULATE BUTTON EVENT ON CLICK-------------//
 const costPriceCalculateButton = document.querySelector(
@@ -44,17 +99,6 @@ costPriceCalculateButton.addEventListener("click", () => {
     2,
   )} excl.VAT`;
 });
-
-//----------SHOW MORE PRICES SECTION-------------//
-function showMorePrices() {
-  const morePricesContainer = document.querySelector(".more-prices-container");
-  const showPricesButton = document.querySelector(".more-prices-button");
-  showPricesButton.addEventListener("click", () => {
-    morePricesContainer.classList.toggle("active");
-    showPricesButton.classList.toggle("active");
-  });
-}
-showMorePrices();
 
 //--------ADD AND REMOVE MORE PRICES--------//
 function addAndRemoveMorePrices() {
