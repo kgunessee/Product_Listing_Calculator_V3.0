@@ -72,10 +72,8 @@ function morePrices() {
       });
       const showPricesButton = document.querySelector(".more-prices-button");
       if (isMoreThanZero) {
-        showPricesButton.style.border = "1px solid rgba(255, 255, 255, 0.5)";
-        showPricesButton.style.background = "#1d3354";
+        showPricesButton.style.background = "#467599";
       } else {
-        showPricesButton.style.border = "none";
         showPricesButton.style.background = "rgba(255, 255, 255, 0.1)";
       }
     });

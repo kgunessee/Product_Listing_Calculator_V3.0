@@ -146,12 +146,14 @@ const courierPrices = {
         break;
 
       case "Tracked 48 Large Letter":
+        console.log("hello");
         courierResultInput.value = (
           (this.royalMail["Royal Mail Tracked 48 Large Letter"] *
             this.surcharges["Royal Mail Fuel Surcharge"] +
             rmExtraSurcharges) *
           vat
         ).toFixed(2);
+
         courierResultService.innerHTML = "Tracked 48 Large Letter";
         break;
       case "Tracked 48 Parcel":
@@ -161,6 +163,7 @@ const courierPrices = {
             rmExtraSurcharges) *
           vat
         ).toFixed(2);
+        console.log("hello");
         courierResultService.innerHTML = "Royal Mail Tracked 48 Parcel";
         break;
       case "Tracked 24 Large Letter":
@@ -273,7 +276,8 @@ function courierSelection() {
   const courierButton = document.querySelectorAll(".courier-btn");
   courierButton.forEach((button) => {
     button.addEventListener("click", (e) => {
-      courierPrices.selectCourier(e.target.innerHTML);
+      let trimmed = e.target.innerHTML.trim(); //Prettier adds whitespace to the button innerHTML. .trim() removes this so the switch statement works.
+      courierPrices.selectCourier(trimmed);
     });
   });
 }

@@ -11,7 +11,7 @@
   /*DEFAULT COLOURS*/
   --default-dark-color: #212121;
   --default-light-color: rgb(233, 255, 249);
-  --light-blue-accent-color: #9ed8db;
+  --light-blue-accent-color: #b8dae1;
   --mid-blue-accent-color: #467599;
   --dark-blue-accent-color: #1d3354;
   --red-accent-color: #d64045;
@@ -24,7 +24,7 @@
   --hover-dark-blue-accent-color: #28406b;
   --hover-red-accent-color: #de5157;
 
-  --default-container-border-radius: 1rem;
+  --default-container-border-radius: 0.5rem;
   --default-button-border-radius: 5px;
   --default-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.13);
   --open-sans-font: "Open Sans", sans-serif;
@@ -81,8 +81,7 @@ main {
   gap: 1rem;
 }
 
-#cost-price-calc-container
-{
+#cost-price-calc-container {
   width: 45%;
 }
 
@@ -90,7 +89,7 @@ main {
   width: 30%;
 }
 
-#tools-container{
+#tools-container {
   width: 25%;
 }
 
@@ -168,10 +167,25 @@ hr {
 
 header {
   background: var(--default-light-color);
+  overflow: hidden;
+  position: relative;
   padding: 1rem;
   border-radius: var(--default-container-border-radius);
   box-shadow: var(--default-box-shadow);
   margin: 1rem 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -50%;
+    right: -50%;
+    background: rgba(66, 156, 210, 0.2);
+    height: 30%;
+    width: 110%;
+    border-radius: 50%;
+    filter: blur(100px);
+    -webkit-filter: blur(60px);
+  }
 
   & p {
     color: var(--default-dark-color);
@@ -209,7 +223,6 @@ header {
   background: var(--default-dark-color);
   grid-column: span 5;
   grid-row: span 3;
-  overflow: hidden;
 
   > div {
     margin-bottom: 1rem;
@@ -254,13 +267,11 @@ header {
 .more-prices-button {
   height: fit-content;
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.9rem;
   padding: 0.4rem 0.5rem;
 
   /*border: 1px solid white;*/
-
 }
-
 
 .more-prices-container {
   display: none;
@@ -355,6 +366,7 @@ header {
     background: rgba(0, 123, 196, 0.4);
   }
 }
+
 .pf-btn {
   background: rgba(183, 17, 17, 0.5);
   &:hover {
@@ -364,6 +376,7 @@ header {
     background: rgba(183, 17, 17, 0.5);
   }
 }
+
 .dpd-btn {
   background: rgba(220, 0, 50, 0.4);
   &:hover {
@@ -373,6 +386,7 @@ header {
     background: rgba(220, 0, 50, 0.4);
   }
 }
+
 .std-48-btn,
 .std-24-btn,
 .rm-btn {
@@ -402,7 +416,18 @@ header {
   transition: 0.2s ease-in-out;
 }
 
-.indicator-centre.active {
+.indicator-bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.5);
+  transition: 0.2s ease-in-out;
+}
+
+.indicator-centre.active,
+.rm24-standard-button:hover .indicator-bottom,
+.rm48-standard-button:hover .indicator-bottom {
   transform: rotate(90deg);
 }
 
@@ -421,20 +446,6 @@ header {
   grid-column: 1 / 4;
 }
 
-.indicator-bottom {
-  position: absolute;
-  bottom: 0;
-  right: 5%;
-  pointer-events: none;
-  color: rgba(255, 255, 255, 0.5);
-  transition: 0.2s ease-in-out;
-}
-
-.rm24-standard-button:hover .indicator-bottom,
-.rm48-standard-button:hover .indicator-bottom {
-  right: 0;
-}
-
 .rm24-standard-button,
 .rm48-standard-button {
   position: relative;
@@ -448,12 +459,23 @@ header {
 .rm48-weight-brackets,
 .rm24-weight-brackets {
   position: absolute;
-  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  top: -1rem;
   left: 100%;
-  background: var(--red-accent-color);
+  background: rgba(23, 23, 23, 0.7);
+  backdrop-filter: blur(10px);
   opacity: 0;
   pointer-events: none;
   transition: opacity 100ms ease-in-out;
+  padding: 1rem;
+  border-radius: var(--default-button-border-radius);
+  box-shadow: var(--default-box-shadow);
+
+  & .rm-btn {
+    font-size: 0.8rem;
+  }
 }
 
 .rm48-standard-button:hover .rm48-weight-brackets,
@@ -479,7 +501,7 @@ header {
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-  border: 2px solid var(--default-light-color);
+  border: 2px solid rgba(255, 255, 255, 0.5);
   padding: 1rem 2rem;
   border-radius: var(--default-button-border-radius);
   height: 6rem;
@@ -496,13 +518,9 @@ header {
   position: relative;
 }
 
-/*------------------TOOLS SECTION------------------*/
-
-
 /*------------------THIRD PARTY CALCULATOR SECTION------------------*/
 
 #third-party-price-calc-container {
-
   background: var(--default-dark-color);
   max-height: var(--max-height);
 }
@@ -512,24 +530,87 @@ header {
   flex-direction: column;
   gap: 1rem;
   max-height: var(--max-height);
+}
 
+/*----------------------TOOLS SECTION-------------------------------*/
+
+#vat-calc-container,
+#percentage-calc-container {
+  overflow: hidden;
+  position: relative;
+  background: var(--default-light-color);
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -10%;
+    right: -10%;
+    background: rgba(66, 156, 210, 0.2);
+    height: 70%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    filter: blur(100px);
+    -webkit-filter: blur(60px);
+  }
+
+  & h2 {
+    color: var(--dark-blue-accent-color);
+    margin-bottom: 0.5rem;
+  }
+
+  & label {
+    color: var(--dark-blue-accent-color);
+    margin-bottom: 0.5rem;
+  }
+
+  & input {
+    background: #dcdcdc;
+    margin-bottom: 1rem;
+    padding: 0.1rem 0.2rem;
+    color: var(--default-dark-color);
+  }
+}
+
+.tools-result {
+  padding: 0.4rem;
+  color: var(--dark-blue-accent-color);
+  font-weight: 600;
+  background: var(--light-blue-accent-color);
+  margin-bottom: 1rem;
+  border-radius: var(--default-button-border-radius);
+  z-index: 2;
 }
 
 /*------------------VAT CALCULATOR SECTION------------------*/
 
 #vat-calc-container {
+  max-height: 50%;
 
+  > div {
+    display: flex;
+    flex-direction: column;
+  }
 
-
+  & input {
+    width: 100%;
+  }
 }
 /*------------------PERCENT CALCULATOR SECTION------------------*/
 
 #percentage-calc-container {
-
-
+  max-height: 50%;
 }
-.tools-result {
-  padding: 1rem;
-  background: #1d3354;
-  margin-bottom: 1rem;
+
+.percent-calc-input-container {
+  display: flex;
+  gap: 1rem;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  & input {
+    width: 100%;
+  }
 }
