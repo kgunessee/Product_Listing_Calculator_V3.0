@@ -139,3 +139,57 @@ function calcExVat(price) {
 function calcPlusVat(price) {
   return price * vat;
 }
+
+function percentCalculator() {
+  const priceInput = document.querySelector("#perc-price-input").valueAsNumber;
+  const percentInput = document.querySelector("#perc-input").valueAsNumber;
+
+  const plusPercent = (priceInput * percentInput) / 100 + 1;
+  const minusPercent = priceInput / (percentInput / 100 + 1);
+  const percentDiff = (percentInput * priceInput) / 100;
+
+  const resultBlocks = document.querySelectorAll(
+    "#percentage-calc-container .tools-result",
+  );
+  resultBlocks[0].innerHTML = `${percentInput}% of £${priceInput} = ${percentDiff}`;
+  resultBlocks[1].innerHTML = `£${priceInput} + ${percentInput}% = ${plusPercent}`;
+  resultBlocks[2].innerHTML = `£${priceInput} - ${percentInput}% = ${minusPercent}`;
+
+  resultBlocks.forEach((e) => (e.style.opacity = "1"));
+}
+
+function calculatePercent() {
+  const percentInputBox = Array.from(document.querySelectorAll(".perc-input"));
+  const noInput = percentInputBox.some((e) => {
+    return e.value == "";
+  });
+
+  if (!noInput) {
+    percentCalculator();
+  }
+}
+
+function calculateVat() {
+  const resultBlocks = document.querySelectorAll(
+    "#vat-calc-container .tools-result",
+  );
+  const vatInputBox = document.querySelector("#vat-price-input").valueAsNumber;
+
+  if (vatInputBox.value === "") {
+    return;
+  } else {
+    resultBlocks[0].innerHTML = `Ex. VAT = ${calcExVat(vatInputBox).toFixed(
+      2,
+    )}`;
+    resultBlocks[1].innerHTML = `Inc. VAT = ${calcPlusVat(vatInputBox).toFixed(
+      2,
+    )}`;
+
+    resultBlocks.forEach((e) => (e.style.opacity = "1"));
+  }
+}
+
+const percentCalcButton = document.querySelector(".percent-calc-button");
+const vatCalcButton = document.querySelector(".vat-calc-button");
+percentCalcButton.addEventListener("click", calculatePercent);
+vatCalcButton.addEventListener("click", calculateVat);

@@ -179,6 +179,7 @@
         <!---------------THIRD PARTY CALCULATOR SECTION----------------->
         <section id="third-party-price-calc-container">
           <h2>Third Party Calculator</h2>
+
           <div class="results-display third-party-result">
             <button class="calculate-button">CALCULATE</button>
             <h3 class="result"></h3>
@@ -205,31 +206,36 @@
           <!---------------PERCENTAGE CALCULATOR SECTION---------->
           <section id="percentage-calc-container">
             <h2>Percent Calculator</h2>
-            <div class="percent-calc-input-container">
-              <div>
-                <label for="perc-calc-cost-input">Price (£)</label>
-                <input type="number" id="perc-calc-cost-input" />
+            <hr />
+            <div class="tool-input">
+              <div class="label-flex">
+                <label for="perc-price-input">Price (£)</label>
+                <input id="perc-price-input" class="perc-input" type="number" />
               </div>
-              <div>
-                <label for="perc-calc-percent-input">Percent (%)</label>
-                <input type="number" id="perc-calc-percent-input" />
+              <div class="label-flex">
+                <label for="perc-input">Percent (%)</label>
+                <input id="perc-input" class="perc-input" type="number" />
               </div>
+              <button class="tools-calc-button percent-calc-button">=</button>
             </div>
-
-            <p class="tools-result">3</p>
-            <p class="tools-result">3</p>
-            <p class="tools-result">3</p>
+            <p class="tools-result">.</p>
+            <p class="tools-result">.</p>
+            <p class="tools-result">.</p>
           </section>
 
           <!---------------VAT CALCULATOR SECTION----------------->
           <section id="vat-calc-container">
             <h2>VAT Calculator</h2>
-            <div>
-              <label for="vat-calc-input">Price (£)</label>
-              <input type="number" id="vat-calc-input" />
+            <hr />
+            <div class="tool-input">
+              <div class="label-flex">
+                <label for="vat-price-input">Price (£)</label>
+                <input id="vat-price-input" type="number" />
+              </div>
+              <button class="tools-calc-button vat-calc-button">=</button>
             </div>
-            <p class="tools-result">3</p>
-            <p class="tools-result">3</p>
+            <p class="tools-result"></p>
+            <p class="tools-result"></p>
           </section>
         </section>
       </main>

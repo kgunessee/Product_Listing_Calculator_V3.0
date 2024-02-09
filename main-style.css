@@ -94,12 +94,18 @@ main {
 }
 
 #cost-price-calc-container,
-#third-party-price-calc-container,
+#third-party-price-calc-container {
+  border-radius: var(--default-container-border-radius);
+  box-shadow: var(--default-box-shadow);
+  padding: 1.5rem 2.5rem;
+  position: relative;
+}
+
 #vat-calc-container,
 #percentage-calc-container {
   border-radius: var(--default-container-border-radius);
   box-shadow: var(--default-box-shadow);
-  padding: 1.5rem 2.5rem;
+  padding: 1rem;
   position: relative;
 }
 
@@ -185,6 +191,7 @@ header {
     border-radius: 50%;
     filter: blur(100px);
     -webkit-filter: blur(60px);
+    pointer-events: none;
   }
 
   & p {
@@ -239,6 +246,7 @@ header {
     border-radius: 50%;
     filter: blur(100px);
     -webkit-filter: blur(100px);
+    pointer-events: none;
   }
 }
 
@@ -529,7 +537,7 @@ header {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  max-height: var(--max-height);
+  max-height: calc(var(--max-height) + 3rem);
 }
 
 /*----------------------TOOLS SECTION-------------------------------*/
@@ -551,11 +559,12 @@ header {
     border-radius: 50%;
     filter: blur(100px);
     -webkit-filter: blur(60px);
+    pointer-events: none;
   }
 
   & h2 {
     color: var(--dark-blue-accent-color);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   & label {
@@ -565,9 +574,39 @@ header {
 
   & input {
     background: #dcdcdc;
-    margin-bottom: 1rem;
     padding: 0.1rem 0.2rem;
     color: var(--default-dark-color);
+    height: fit-content;
+  }
+
+  & hr {
+    background: var(--light-blue-accent-color);
+  }
+}
+
+.tool-input {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: end;
+}
+
+.label-flex {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+}
+
+.tools-calc-button {
+  background: #68b668;
+  min-width: 0;
+
+  &:hover {
+    background: #71bd71;
+  }
+
+  &:active {
+    background: #68b668;
   }
 }
 
@@ -579,38 +618,16 @@ header {
   margin-bottom: 1rem;
   border-radius: var(--default-button-border-radius);
   z-index: 2;
+  opacity: 0;
 }
 
 /*------------------VAT CALCULATOR SECTION------------------*/
 
 #vat-calc-container {
-  max-height: 50%;
-
-  > div {
-    display: flex;
-    flex-direction: column;
-  }
-
-  & input {
-    width: 100%;
-  }
+  /*max-height: 50%;*/
 }
 /*------------------PERCENT CALCULATOR SECTION------------------*/
 
 #percentage-calc-container {
-  max-height: 50%;
-}
-
-.percent-calc-input-container {
-  display: flex;
-  gap: 1rem;
-
-  > div {
-    display: flex;
-    flex-direction: column;
-  }
-
-  & input {
-    width: 100%;
-  }
+  /*max-height: 50%;*/
 }
