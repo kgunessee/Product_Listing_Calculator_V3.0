@@ -22,16 +22,20 @@
           <h1>Product Listing Calculator</h1>
           <p>Prices up to date as of...</p>
         </div>
-        <div id="toolbar">
-          <p>
-            VAT:
-            <span><input value="20" type="number" class="vat-input-box" /></span
-            >%
-          </p>
+        <div id="settings-buttons">
+          <button>Settings</button>
+          <button>Courier Prices</button>
         </div>
+
         <div id="toolbar-buttons"></div>
       </header>
       <main>
+        <section id="settings-container">
+          <input value="20" type="number" class="vat-input-box" />
+
+          <input value="10" type="number" class="trs-input-box" />
+        </section>
+
         <!---------------COST PRICE CALCULATOR SECTION----------------->
         <section id="cost-price-calc-container">
           <h2>Cost Price Calculator</h2>
@@ -40,8 +44,8 @@
               CALCULATE
             </button>
             <div>
-              <h3 class="cost-price-result">434</h3>
-              <p class="result-ex-vat">434</p>
+              <h3 class="cost-price-result"></h3>
+              <p class="result-ex-vat"></p>
             </div>
           </div>
           <!--          The rest of the calculator underneath the results display-->
@@ -170,72 +174,124 @@
               </div>
             </div>
             <div class="courier-result-container">
-              <h3>Royal Mail Standard 48 Large Letter (0-135g)</h3>
+              <h3></h3>
               <input type="number" class="courier-result" />
             </div>
           </section>
         </section>
 
-        <!---------------THIRD PARTY CALCULATOR SECTION----------------->
-        <section id="third-party-price-calc-container">
-          <h2>Third Party Calculator</h2>
-
-          <div class="results-display third-party-result">
-            <button class="calculate-button">CALCULATE</button>
-            <h3 class="result"></h3>
-            <p class="result-ex-vat"></p>
-          </div>
-
-          <div class="input-block third-party-input">
-            <label for="third-party-input">Cost Input</label>
-            <input type="number" id="third-party-input" />
-          </div>
-
-          <div id="third-party-fees-section">
-            <div class="input-block third-party-fee-input">
-              <label for="third-party-fee">3rd Party Fee %</label>
-              <input type="number" id="third-party-fee" />
-            </div>
-            <div class="input-block promo-input">
-              <label for="promo">Promotion %</label>
-              <input type="number" id="promo" />
-            </div>
-          </div>
-        </section>
-        <section id="tools-container">
-          <!---------------PERCENTAGE CALCULATOR SECTION---------->
-          <section id="percentage-calc-container">
-            <h2>Percent Calculator</h2>
-            <hr />
-            <div class="tool-input">
-              <div class="label-flex">
-                <label for="perc-price-input">Price (£)</label>
-                <input id="perc-price-input" class="perc-input" type="number" />
+        <section id="third-party-and-tools-section">
+          <!---------------THIRD PARTY CALCULATOR SECTION----------------->
+          <section id="third-party-price-calc-container">
+            <div id="third-party-title-presets">
+            <h2>Third Party Calculator</h2>
+            <div id="options-and-presets">
+              <div id="presets">
+                <button class="sw-preset">SW</button>
+                <button class="inta-ebay-preset">Inta eBay</button>
+                <button class="amz-preset">Amz</button>
+                <button class="web-preset">Web/AV</button>
               </div>
-              <div class="label-flex">
-                <label for="perc-input">Percent (%)</label>
-                <input id="perc-input" class="perc-input" type="number" />
-              </div>
-              <button class="tools-calc-button percent-calc-button">=</button>
             </div>
-            <p class="tools-result">.</p>
-            <p class="tools-result">.</p>
-            <p class="tools-result">.</p>
+            </div>
+            <div class="results-display third-party-result">
+              <button class="calculate-button third-party-calculate-btn">
+                CALCULATE
+              </button>
+              <h3 class="result third-party-earnings-result"></h3>
+            </div>
+
+            <div id="input-and-result-grid">
+              <div class="third-party-blocks">
+                <div class="input-block third-party-input">
+                  <label for="third-party-input">Cost Input</label>
+                  <input type="number" id="third-party-input" />
+                </div>
+                <hr />
+                <div id="third-party-fees-section">
+                  <div class="input-block category-fee-input">
+                    <label for="category-fee">Category Fee %</label>
+                    <input type="number" id="category-fee" value="10.9" />
+                  </div>
+                  <div class="input-block promo-input">
+                    <label for="promo">Promotion %</label>
+                    <input type="number" id="promo" value="0" />
+                  </div>
+                  <div class="input-block final-value-fee">
+                    <label for="promo">Final Value Fee (£)</label>
+                    <input id="final-value-fee" type="number" value="0.05" />
+                  </div>
+                </div>
+                <div id="third-party-options-container">
+                  <div id="fee-vat-container">
+                    <button
+                      class="fee-vat-button third-party-option-btn active"
+                    >
+                      Apply VAT to Fees
+                    </button>
+                  </div>
+                  <div id="trs-discount-container">
+                    <button class="trs-discount-button third-party-option-btn">
+                      Apply Top Rated Seller Discount
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div id="third-party-results-section" class="third-party-blocks">
+                <p>Results</p>
+                <p>Category Fee = £<span class="price-breakdown-box"></span></p>
+                <p>Promo Fee = £<span class="price-breakdown-box"></span></p>
+                <p>
+                  Final Value Fee = £<span class="price-breakdown-box"></span>
+                </p>
+                <p>Total Fee = £<span class="price-breakdown-box"></span></p>
+              </div>
+            </div>
+            <p id="results-info">.</p>
           </section>
-
-          <!---------------VAT CALCULATOR SECTION----------------->
-          <section id="vat-calc-container">
-            <h2>VAT Calculator</h2>
-            <hr />
-            <div class="tool-input">
-              <div class="label-flex">
-                <label for="vat-price-input">Price (£)</label>
-                <input id="vat-price-input" type="number" />
+          <section id="tools-container">
+            <!---------------PERCENTAGE CALCULATOR SECTION---------->
+            <section id="percentage-calc-container">
+              <div>
+                <h2>Percent Calculator</h2>
               </div>
-              <button class="tools-calc-button vat-calc-button">=</button>
-            </div>
-            <p class="tools-result"></p>
-            <p class="tools-result"></p>
+
+              <hr />
+              <div class="tool-input">
+                <div class="label-flex">
+                  <label for="perc-price-input">Price (£)</label>
+                  <input
+                    id="perc-price-input"
+                    class="perc-input"
+                    type="number"
+                  />
+                </div>
+                <div class="label-flex">
+                  <label for="perc-input">Percent (%)</label>
+                  <input id="perc-input" class="perc-input" type="number" />
+                </div>
+                <button class="tools-calc-button percent-calc-button">=</button>
+              </div>
+              <p class="tools-result"></p>
+              <p class="tools-result"></p>
+              <p class="tools-result"></p>
+            </section>
+
+            <!---------------VAT CALCULATOR SECTION----------------->
+            <section id="vat-calc-container">
+              <h2>VAT Calculator</h2>
+              <hr />
+              <div class="tool-input">
+                <div class="label-flex">
+                  <label for="vat-price-input">Price (£)</label>
+                  <input id="vat-price-input" type="number" />
+                </div>
+                <button class="tools-calc-button vat-calc-button">=</button>
+              </div>
+              <p class="tools-result"></p>
+              <p class="tools-result"></p>
+            </section>
           </section>
         </section>
       </main>

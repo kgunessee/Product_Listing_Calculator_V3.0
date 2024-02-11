@@ -51,6 +51,7 @@
 
 body {
   overflow-y: scroll;
+  background: #efefef;
 }
 
 #listing-calculator-all {
@@ -79,25 +80,26 @@ button:active {
 main {
   display: flex;
   gap: 1rem;
+
 }
 
 #cost-price-calc-container {
   width: 45%;
 }
 
-#third-party-price-calc-container {
-  width: 30%;
+#third-party-and-tools-section{
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+  gap: 1rem;
 }
 
-#tools-container {
-  width: 25%;
-}
 
 #cost-price-calc-container,
 #third-party-price-calc-container {
   border-radius: var(--default-container-border-radius);
   box-shadow: var(--default-box-shadow);
-  padding: 1.5rem 2.5rem;
+  padding: 1rem 2.5rem;
   position: relative;
 }
 
@@ -129,7 +131,7 @@ h2 {
   padding: 0.5rem;
   height: 4rem;
   border-radius: var(--default-button-border-radius);
-  /*margin-bottom: 1rem;*/
+  margin-bottom: 1rem;
 }
 
 .results-display h3 {
@@ -160,6 +162,7 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+
 }
 
 hr {
@@ -179,6 +182,9 @@ header {
   border-radius: var(--default-container-border-radius);
   box-shadow: var(--default-box-shadow);
   margin: 1rem 0;
+  display: flex;
+  align-items: end;
+  gap: 2rem;
 
   &::after {
     content: "";
@@ -212,14 +218,10 @@ header {
   color: var(--default-dark-color);
 }
 
-.vat-input-box {
-  width: 2rem;
-  height: fit-content;
-  background: #d5d5d5;
-  font-size: 0.8rem;
-  text-align: center;
+#settings-buttons button{
+  border: 1px solid var(--mid-blue-accent-color);
+  background: #efefef;
   color: var(--default-dark-color);
-  font-weight: 600;
 }
 
 /*------------------COST PRICE CALCULATOR SECTION------------------*/
@@ -228,12 +230,7 @@ header {
 
 #cost-price-calc-container {
   background: var(--default-dark-color);
-  grid-column: span 5;
-  grid-row: span 3;
 
-  > div {
-    margin-bottom: 1rem;
-  }
 
   &::before {
     content: "";
@@ -515,7 +512,7 @@ header {
   height: 6rem;
 
   & h3 {
-    color: var(--default-light-color);
+    color: rgba(255, 255, 255, 0.85);
   }
 }
 
@@ -530,17 +527,139 @@ header {
 
 #third-party-price-calc-container {
   background: var(--default-dark-color);
-  max-height: var(--max-height);
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -10%;
+    right: -10%;
+    background: rgba(66, 156, 210, 0.1);
+    height: 70%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    filter: blur(60px);
+    -webkit-filter: blur(60px);
+    pointer-events: none;
+  }
 }
 
-#tools-container {
+
+
+/*#presets{*/
+/*  display: grid;*/
+/*  grid-template-columns: repeat(2, 1fr);*/
+/*  grid-template-rows: repeat(2, 1fr);*/
+/*  gap: 0.2rem;*/
+/*}*/
+
+#presets button {
+  color: var(--default-light-color);
+  background: var(--mid-blue-accent-color);
+  width: fit-content;
+  min-width: 0;
+}
+
+#third-party-fees-section {
   display: flex;
-  flex-direction: column;
+  gap: .5rem;
+  margin-bottom: 1rem;
+}
+
+#third-party-results-section{
+  grid-column: 3 / 4;
+}
+#third-party-results-section p,
+#results-info {
+  padding: 0.4rem;
+  border-radius: var(--default-button-border-radius);
+}
+
+#third-party-results-section p {
+  background: rgba(184, 218, 225, 0.8);
+  margin-bottom: 1rem;
+  color: var(--default-dark-color);
+  /*width: 10rem;*/
+
+  &:first-child{
+    background: none;
+    color: var(--default-light-color);
+    margin-bottom: .5rem;
+    padding: 0;
+  }
+  &:nth-child(5) {
+    background: rgba(108, 169, 182, 0.8);
+    /*color: white;*/
+    font-weight: 600;
+
+  }
+
+  & span{
+    color: var(--default-dark-color);
+  }
+}
+
+#input-and-result-grid{
+  display: grid;
+  /*justify-content: space-between;*/
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  max-height: calc(var(--max-height) + 3rem);
+  /*width: 50%;*/
+
+  & div:first-child{
+    grid-column: 1 / 3;
+
+  }
+}
+
+.third-party-blocks{
+  position: relative;
+  overflow: hidden;
+  background: rgb(255,255,255);
+  background: linear-gradient(336deg, rgba(122, 148, 252, 0.1) 0%, rgba(255,255,255,0.1) 100%);
+  border-radius: var(--default-button-border-radius);
+  padding: 0.5rem;
+  }
+
+
+#results-info {
+ color: var(--default-dark-color);
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  font-weight: 600;
+  opacity: 0;
+}
+
+#third-party-options-container {
+  display: flex;
+  align-items: end;
+  font-size: 0.9rem;
+  font-weight: 500;
+  gap: .5rem;
+}
+#third-party-options-container label,
+#third-party-options-container input {
+  color: var(--default-light-color);
+}
+
+
+#fee-vat-container,
+#trs-discount-container {
+}
+
+.third-party-option-btn.active{
+  background: #5183a9;
 }
 
 /*----------------------TOOLS SECTION-------------------------------*/
+#tools-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /*flex-direction: column;*/
+  gap: 1rem;
+  max-height: calc(var(--max-height) + 3rem);
+}
 
 #vat-calc-container,
 #percentage-calc-container {
@@ -581,6 +700,7 @@ header {
 
   & hr {
     background: var(--light-blue-accent-color);
+    margin: .5rem 0;
   }
 }
 
@@ -615,19 +735,35 @@ header {
   color: var(--dark-blue-accent-color);
   font-weight: 600;
   background: var(--light-blue-accent-color);
-  margin-bottom: 1rem;
+  margin-bottom: .4rem;
   border-radius: var(--default-button-border-radius);
   z-index: 2;
   opacity: 0;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /*------------------VAT CALCULATOR SECTION------------------*/
 
 #vat-calc-container {
-  /*max-height: 50%;*/
 }
 /*------------------PERCENT CALCULATOR SECTION------------------*/
 
 #percentage-calc-container {
-  /*max-height: 50%;*/
+}
+
+/*------------------SETTINGS SECTION------------------*/
+#settings-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.vat-input-box, .trs-input-box {
+  width: 2rem;
+  height: fit-content;
+  background: #d5d5d5;
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--default-dark-color);
+  font-weight: 600;
 }
