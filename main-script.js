@@ -10,12 +10,10 @@ function setModuleHeight() {
     .querySelector("#cost-price-calc-container")
     .getBoundingClientRect().height;
 
-  const thirdPartyCalcContainer = document.querySelector(
-    "#third-party-price-calc-container",
-  );
+  const settingsContainer = document.querySelector("#settings-container");
 
-  thirdPartyCalcContainer.style.setProperty(
-    "--max-height",
+  settingsContainer.style.setProperty(
+    "--settings-height",
     `${costPriceCalcHeight}px`,
   );
 
@@ -375,3 +373,12 @@ function presets() {
   });
 }
 presets();
+
+function settingsButton() {
+  const settingsButton = document.querySelectorAll(".settings-button");
+  settingsButton.forEach((button) => {
+    button.addEventListener("click", (e) => {
+      e.target.classList.toggle("active");
+    });
+  });
+}

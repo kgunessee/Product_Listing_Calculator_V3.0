@@ -23,18 +23,21 @@
           <p>Prices up to date as of...</p>
         </div>
         <div id="settings-buttons">
-          <button>Settings</button>
-          <button>Courier Prices</button>
+          <button class="settings-button">Settings</button>
+          <button class="settings-button">Courier Prices</button>
         </div>
 
         <div id="toolbar-buttons"></div>
+        <section id="settings-container">
+          <label for="vat-input-box">VAT (%)</label>
+          <input value="20" type="number" id="vat-input-box" class="vat-input-box" />
+          <label for="trs-input-box">eBay Top Rated Seller Discount (%)</label>
+          <input value="10" type="number" id="trs-input-box" class="trs-input-box" />
+        </section>
       </header>
       <main>
-        <section id="settings-container">
-          <input value="20" type="number" class="vat-input-box" />
 
-          <input value="10" type="number" class="trs-input-box" />
-        </section>
+
 
         <!---------------COST PRICE CALCULATOR SECTION----------------->
         <section id="cost-price-calc-container">
@@ -295,8 +298,8 @@
           </section>
         </section>
       </main>
-      <script src="main-script.js"></script>
-      <script src="courier_select_and_prices.js"></script>
+      <script src="main-script.js" defer></script>
+      <script src="courier_select_and_prices.js" defer></script>
     </section>
   </body>
 </html>

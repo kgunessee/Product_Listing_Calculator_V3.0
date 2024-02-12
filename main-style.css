@@ -28,7 +28,7 @@
   --default-button-border-radius: 5px;
   --default-box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.13);
   --open-sans-font: "Open Sans", sans-serif;
-  --max-height: 100%;
+  --settings-height: 100%;
 }
 
 /*------------------DEFAULT STYLES------------------*/
@@ -80,20 +80,18 @@ button:active {
 main {
   display: flex;
   gap: 1rem;
-
 }
 
 #cost-price-calc-container {
   width: 45%;
 }
 
-#third-party-and-tools-section{
+#third-party-and-tools-section {
   display: flex;
   flex-direction: column;
   width: 55%;
   gap: 1rem;
 }
-
 
 #cost-price-calc-container,
 #third-party-price-calc-container {
@@ -162,7 +160,6 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-
 }
 
 hr {
@@ -176,7 +173,6 @@ hr {
 
 header {
   background: var(--default-light-color);
-  overflow: hidden;
   position: relative;
   padding: 1rem;
   border-radius: var(--default-container-border-radius);
@@ -185,20 +181,6 @@ header {
   display: flex;
   align-items: end;
   gap: 2rem;
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -50%;
-    right: -50%;
-    background: rgba(66, 156, 210, 0.2);
-    height: 30%;
-    width: 110%;
-    border-radius: 50%;
-    filter: blur(100px);
-    -webkit-filter: blur(60px);
-    pointer-events: none;
-  }
 
   & p {
     color: var(--default-dark-color);
@@ -218,7 +200,7 @@ header {
   color: var(--default-dark-color);
 }
 
-#settings-buttons button{
+#settings-buttons button {
   border: 1px solid var(--mid-blue-accent-color);
   background: #efefef;
   color: var(--default-dark-color);
@@ -230,7 +212,6 @@ header {
 
 #cost-price-calc-container {
   background: var(--default-dark-color);
-
 
   &::before {
     content: "";
@@ -544,29 +525,41 @@ header {
   }
 }
 
+#third-party-title-presets {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
 
-
-/*#presets{*/
-/*  display: grid;*/
-/*  grid-template-columns: repeat(2, 1fr);*/
-/*  grid-template-rows: repeat(2, 1fr);*/
-/*  gap: 0.2rem;*/
-/*}*/
+  & h2 {
+    margin-bottom: 0;
+  }
+}
 
 #presets button {
   color: var(--default-light-color);
   background: var(--mid-blue-accent-color);
   width: fit-content;
+  padding: 0.3rem;
   min-width: 0;
+  margin: 0;
+
+  &:hover {
+    background: var(--hover-mid-blue-accent-color);
+  }
+
+  &:active {
+    background: var(--mid-blue-accent-color);
+  }
 }
 
 #third-party-fees-section {
   display: flex;
-  gap: .5rem;
+  gap: 0.5rem;
   margin-bottom: 1rem;
 }
 
-#third-party-results-section{
+#third-party-results-section {
   grid-column: 3 / 4;
 }
 #third-party-results-section p,
@@ -581,49 +574,50 @@ header {
   color: var(--default-dark-color);
   /*width: 10rem;*/
 
-  &:first-child{
+  &:first-child {
     background: none;
     color: var(--default-light-color);
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     padding: 0;
   }
   &:nth-child(5) {
     background: rgba(108, 169, 182, 0.8);
     /*color: white;*/
     font-weight: 600;
-
   }
 
-  & span{
+  & span {
     color: var(--default-dark-color);
   }
 }
 
-#input-and-result-grid{
+#input-and-result-grid {
   display: grid;
   /*justify-content: space-between;*/
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   /*width: 50%;*/
 
-  & div:first-child{
+  & div:first-child {
     grid-column: 1 / 3;
-
   }
 }
 
-.third-party-blocks{
+.third-party-blocks {
   position: relative;
   overflow: hidden;
-  background: rgb(255,255,255);
-  background: linear-gradient(336deg, rgba(122, 148, 252, 0.1) 0%, rgba(255,255,255,0.1) 100%);
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    336deg,
+    rgba(122, 148, 252, 0.1) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
   border-radius: var(--default-button-border-radius);
   padding: 0.5rem;
-  }
-
+}
 
 #results-info {
- color: var(--default-dark-color);
+  color: var(--default-dark-color);
   text-align: center;
   font-size: 1.2rem;
   margin-top: 1rem;
@@ -636,19 +630,18 @@ header {
   align-items: end;
   font-size: 0.9rem;
   font-weight: 500;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 #third-party-options-container label,
 #third-party-options-container input {
   color: var(--default-light-color);
 }
 
-
 #fee-vat-container,
 #trs-discount-container {
 }
 
-.third-party-option-btn.active{
+.third-party-option-btn.active {
   background: #5183a9;
 }
 
@@ -700,7 +693,7 @@ header {
 
   & hr {
     background: var(--light-blue-accent-color);
-    margin: .5rem 0;
+    margin: 0.5rem 0;
   }
 }
 
@@ -735,7 +728,7 @@ header {
   color: var(--dark-blue-accent-color);
   font-weight: 600;
   background: var(--light-blue-accent-color);
-  margin-bottom: .4rem;
+  margin-bottom: 0.4rem;
   border-radius: var(--default-button-border-radius);
   z-index: 2;
   opacity: 0;
@@ -752,13 +745,24 @@ header {
 }
 
 /*------------------SETTINGS SECTION------------------*/
-#settings-container{
+#settings-container {
   position: absolute;
-  top: 0;
-  left: 0;
+  display: none;
+  border-radius: var(--default-container-border-radius);
+  box-shadow: var(--default-box-shadow);
+  top: calc(100% + 1rem);
+  right: 0;
+  background: #d3d3d3;
+  height: var(--settings-height);
+  z-index: 5;
 }
 
-.vat-input-box, .trs-input-box {
+#settings-container.active {
+  display: block;
+}
+
+.vat-input-box,
+.trs-input-box {
   width: 2rem;
   height: fit-content;
   background: #d5d5d5;
