@@ -4,6 +4,14 @@
 const vat = document.querySelector(".vat-input-box").valueAsNumber / 100 + 1;
 const vatAsPercentage = Math.ceil((vat - 1) * 100);
 const courierResultInput = document.querySelector(".courier-result");
+const costPriceCalcContainer = document.querySelector(
+  "#cost-price-calc-container",
+);
+const toolsContainer = document.querySelector("#tools-container");
+const thirdPartyContainer = document.querySelector(
+  "#third-party-price-calc-container",
+);
+const header = document.querySelector("header");
 
 function setModuleHeight() {
   const costPriceCalcHeight = document
@@ -24,10 +32,12 @@ setModuleHeight();
 //----------------------------------------COST PRICE CALCULATOR SECTION----------------------------------------------//
 //-------------COST PRICE MAIN CALCULATION-------------//
 function costPriceCalculate(morePrices, courier) {
-  const costInput = document.querySelector("#cost-input").valueAsNumber;
-  const packSizeInput = document.querySelector("#pack-size").valueAsNumber;
+  const costInput =
+    costPriceCalcContainer.querySelector("#cost-input").valueAsNumber;
+  const packSizeInput =
+    costPriceCalcContainer.querySelector("#pack-size").valueAsNumber;
   const extraChargesInput =
-    document.querySelector("#extra-charges").valueAsNumber;
+    costPriceCalcContainer.querySelector("#extra-charges").valueAsNumber;
 
   // const total =
 
@@ -40,8 +50,12 @@ function costPriceCalculate(morePrices, courier) {
 
 //----------SHOW MORE PRICES SECTION-------------//
 function showMorePrices() {
-  const morePricesContainer = document.querySelector(".more-prices-container");
-  const showPricesButton = document.querySelector(".more-prices-button");
+  const morePricesContainer = costPriceCalcContainer.querySelector(
+    ".more-prices-container",
+  );
+  const showPricesButton = costPriceCalcContainer.querySelector(
+    ".more-prices-button",
+  );
   showPricesButton.addEventListener("click", () => {
     morePricesContainer.classList.toggle("active");
     if (morePricesContainer.classList.contains("active")) {
@@ -54,8 +68,9 @@ function showMorePrices() {
 showMorePrices();
 
 function morePrices() {
-  const morePrices = document.querySelectorAll(".price");
-  const morePricesQuantity = document.querySelectorAll(".quantity");
+  const morePrices = costPriceCalcContainer.querySelectorAll(".price");
+  const morePricesQuantity =
+    costPriceCalcContainer.querySelectorAll(".quantity");
   let total = 0;
   morePrices.forEach((price, index) => {
     if (price.value == "") {
@@ -72,7 +87,9 @@ function morePrices() {
       const isMoreThanZero = inputList.some((e) => {
         return e.valueAsNumber > 0;
       });
-      const showPricesButton = document.querySelector(".more-prices-button");
+      const showPricesButton = costPriceCalcContainer.querySelector(
+        ".more-prices-button",
+      );
       if (isMoreThanZero) {
         showPricesButton.style.background = "#467599";
       } else {
@@ -89,8 +106,10 @@ const costPriceCalculateButton = document.querySelector(
   ".cost-price-calc-button",
 );
 costPriceCalculateButton.addEventListener("click", () => {
-  const costPriceDisplayIncVat = document.querySelector(".cost-price-result");
-  const costPriceDisplayExVat = document.querySelector(".result-ex-vat");
+  const costPriceDisplayIncVat =
+    costPriceCalcContainer.querySelector(".cost-price-result");
+  const costPriceDisplayExVat =
+    costPriceCalcContainer.querySelector(".result-ex-vat");
   const costPrice = costPriceCalculate(morePrices(), courierResultInput);
 
   costPriceDisplayIncVat.innerHTML = `Total cost price = £${costPrice.toFixed(
@@ -103,24 +122,28 @@ costPriceCalculateButton.addEventListener("click", () => {
 
 //--------ADD AND REMOVE MORE PRICES--------//
 function addAndRemoveMorePrices() {
-  const addButton = document.querySelector(".add-extra-price-button");
-  const morePricesContainer = document.querySelector(".more-prices-container");
+  const addButton = costPriceCalcContainer.querySelector(
+    ".add-extra-price-button",
+  );
+  const morePricesContainer = costPriceCalcContainer.querySelector(
+    ".more-prices-container",
+  );
 
   addButton.addEventListener("click", () => {
-    const newDiv = document.createElement("div");
+    const newDiv = costPriceCalcContainer.createElement("div");
     newDiv.className = "more-price-block";
 
-    const newPriceInput = document.createElement("input");
+    const newPriceInput = costPriceCalcContainer.createElement("input");
     newPriceInput.className = "price";
     newPriceInput.value = "0";
     newPriceInput.type = "number";
 
-    const newQuantityInput = document.createElement("input");
+    const newQuantityInput = costPriceCalcContainer.createElement("input");
     newQuantityInput.className = "quantity";
     newQuantityInput.value = "1";
     newQuantityInput.type = "number";
 
-    const removeButton = document.createElement("button");
+    const removeButton = costPriceCalcContainer.createElement("button");
     removeButton.className = "remove-button";
     removeButton.innerHTML = "Delete";
 
@@ -148,14 +171,16 @@ function calcPlusVat(price) {
 
 //--------CALCULATE AND DISPLAY THE PERCENTAGE CALCULATOR RESULTS--------//
 function percentCalculator() {
-  const priceInput = document.querySelector("#perc-price-input").valueAsNumber;
-  const percentInput = document.querySelector("#perc-input").valueAsNumber;
+  const priceInput =
+    toolsContainer.querySelector("#perc-price-input").valueAsNumber;
+  const percentInput =
+    toolsContainer.querySelector("#perc-input").valueAsNumber;
 
   const plusPercent = (priceInput * percentInput) / 100 + 1;
   const minusPercent = priceInput / (percentInput / 100 + 1);
   const percentDiff = (percentInput * priceInput) / 100;
 
-  const resultBlocks = document.querySelectorAll(
+  const resultBlocks = toolsContainer.querySelectorAll(
     "#percentage-calc-container .tools-result",
   );
   resultBlocks[0].innerHTML = `${percentInput}% of £${priceInput.toFixed(
@@ -175,7 +200,9 @@ function percentCalculator() {
 
 //--------FUNCTION FOR THE CALCULATE PERCENTAGE BUTTON--------//
 function calculatePercent() {
-  const percentInputBox = Array.from(document.querySelectorAll(".perc-input"));
+  const percentInputBox = Array.from(
+    toolsContainer.querySelectorAll(".perc-input"),
+  );
 
   //If there is one or no input boxes filled, do not execute function.
   const noInput = percentInputBox.some((e) => {
@@ -189,10 +216,11 @@ function calculatePercent() {
 
 //--------FUNCTION FOR THE CALCULATE VAT BUTTON--------//
 function calculateVat() {
-  const resultBlocks = document.querySelectorAll(
+  const resultBlocks = toolsContainer.querySelectorAll(
     "#vat-calc-container .tools-result",
   );
-  const vatInputBox = document.querySelector("#vat-price-input").valueAsNumber;
+  const vatInputBox =
+    toolsContainer.querySelector("#vat-price-input").valueAsNumber;
 
   //If there is one or no input boxes filled, do not execute function.
   if (vatInputBox) {
@@ -207,8 +235,8 @@ function calculateVat() {
 }
 
 //--------CLICK EVENTS FOR THE TOOLS CALCULATE BUTTONS--------//
-const percentCalcButton = document.querySelector(".percent-calc-button");
-const vatCalcButton = document.querySelector(".vat-calc-button");
+const percentCalcButton = toolsContainer.querySelector(".percent-calc-button");
+const vatCalcButton = toolsContainer.querySelector(".vat-calc-button");
 percentCalcButton.addEventListener("click", calculatePercent);
 vatCalcButton.addEventListener("click", calculateVat);
 
@@ -237,21 +265,25 @@ function promoFees(price) {
 // --------FUNCTION TO CALCULATE THE THIRD PARTY TOTAL EARNINGS--------//
 function calculateThirdPartyEarnings() {
   const thirdPartyCostInput =
-    document.querySelector("#third-party-input").valueAsNumber;
-  const feeVatButton = document.querySelector(".fee-vat-button");
-  const trsDiscountButton = document.querySelector(".trs-discount-button");
+    thirdPartyContainer.querySelector("#third-party-input").valueAsNumber;
+  const feeVatButton = thirdPartyContainer.querySelector(".fee-vat-button");
+  const trsDiscountButton = thirdPartyContainer.querySelector(
+    ".trs-discount-button",
+  );
 
   const thirdPartyFeeValue = thirdPartyFees(thirdPartyCostInput);
   const promoFeeValue = promoFees(thirdPartyCostInput);
   const finalValueFee =
-    document.querySelector("#final-value-fee").valueAsNumber;
+    thirdPartyContainer.querySelector("#final-value-fee").valueAsNumber;
 
-  const priceBreakdownBoxes = document.querySelectorAll(".price-breakdown-box");
+  const priceBreakdownBoxes = thirdPartyContainer.querySelectorAll(
+    ".price-breakdown-box",
+  );
 
   //--Function to return the cat fee with TRS discount--//
   function topRatedSeller(price) {
     const trsValueInput =
-      document.querySelector(".trs-input-box").valueAsNumber / 100;
+      header.querySelector(".trs-input-box").valueAsNumber / 100;
     const percentValue = price * trsValueInput;
     return price - percentValue;
   }
@@ -290,7 +322,7 @@ function calculateThirdPartyEarnings() {
   const totalFeesValue =
     (categoryFee + promoFeeValue + finalValueFee) * thirdPartyVat;
   const total = thirdPartyCostInput - totalFeesValue;
-  const thirdPartyResultDisplay = document.querySelector(
+  const thirdPartyResultDisplay = thirdPartyContainer.querySelector(
     ".third-party-earnings-result",
   );
 
@@ -298,7 +330,8 @@ function calculateThirdPartyEarnings() {
     2,
   )}`;
 
-  const totalDifferenceDisplay = document.querySelector("#results-info");
+  const totalDifferenceDisplay =
+    thirdPartyContainer.querySelector("#results-info");
   const totalDifferenceValue =
     total - costPriceCalculate(morePrices(), courierResultInput);
 
@@ -315,13 +348,15 @@ function calculateThirdPartyEarnings() {
     totalDifferenceDisplay.style.background = "rgb(65,208,77)";
     totalDifferenceDisplay.style.opacity = "1";
   }
-  console.log(totalDifferenceValue);
+
   // totalDifferenceDisplay.innerHTML = totalDifferenceValue;
 }
 
 //--------TOGGLES THE THIRD PARTY OPTION BUTTONS ACTIVE OR NOT-------//
 function thirdPartyOptionButton() {
-  const button = document.querySelectorAll(".third-party-option-btn");
+  const button = thirdPartyContainer.querySelectorAll(
+    ".third-party-option-btn",
+  );
   button.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.target.classList.toggle("active");
@@ -330,7 +365,7 @@ function thirdPartyOptionButton() {
 }
 thirdPartyOptionButton();
 
-const thirdPartyCalculateButton = document.querySelector(
+const thirdPartyCalculateButton = thirdPartyContainer.querySelector(
   ".third-party-calculate-btn",
 );
 thirdPartyCalculateButton.addEventListener(
@@ -340,11 +375,13 @@ thirdPartyCalculateButton.addEventListener(
 
 //----------------------------------------PRESETS SECTION----------------------------------------------//
 function presets() {
-  const feeVatButton = document.querySelector(".fee-vat-button");
-  const trsDiscountButton = document.querySelector(".trs-discount-button");
-  const finalValueFee = document.querySelector("#final-value-fee");
-  const thirdPartyFeeInput = document.querySelector("#category-fee");
-  const presetButtons = document.querySelectorAll("#presets button");
+  const feeVatButton = thirdPartyContainer.querySelector(".fee-vat-button");
+  const trsDiscountButton = thirdPartyContainer.querySelector(
+    ".trs-discount-button",
+  );
+  const finalValueFee = thirdPartyContainer.querySelector("#final-value-fee");
+  const thirdPartyFeeInput = thirdPartyContainer.querySelector("#category-fee");
+  const presetButtons = thirdPartyContainer.querySelectorAll("#presets button");
 
   presetButtons.forEach((button) => {
     button.addEventListener("click", (e) => {
@@ -374,11 +411,33 @@ function presets() {
 }
 presets();
 
-function settingsButton() {
-  const settingsButton = document.querySelectorAll(".settings-button");
-  settingsButton.forEach((button) => {
-    button.addEventListener("click", (e) => {
-      e.target.classList.toggle("active");
+function infoDisplay() {
+  const infoButton = header.querySelectorAll(".info-button");
+  const infoSection = header.querySelectorAll(".info-section");
+
+  infoButton.forEach((button, i) => {
+    button.addEventListener("click", () => {
+      if (infoSection[i].classList.contains("active")) {
+        infoSection[i].classList.remove("active");
+      } else {
+        infoSection.forEach((section) => {
+          section.classList.remove("active");
+        });
+        infoSection[i].classList.add("active");
+      }
     });
   });
 }
+infoDisplay();
+
+function openAccordions() {
+  const accordionHeader = header.querySelectorAll(".accordion-header");
+  const accordionContent = header.querySelectorAll(".accordion-content");
+
+  accordionHeader.forEach((header, i) => {
+    header.addEventListener("click", () => {
+      accordionContent[i].classList.toggle("active");
+    });
+  });
+}
+openAccordions();

@@ -771,3 +771,22 @@ header {
   color: var(--default-dark-color);
   font-weight: 600;
 }
+
+.accordion-header{
+  color: #212121;
+  background: var(--light-blue-accent-color);
+  padding: 1rem;
+}
+
+.accordion-content {
+  max-height: 0;
+  transition: .2s;
+  background: #5183a9;
+  overflow: scroll;
+
+}
+
+.accordion-content.active{
+  max-height: 50rem;
+
+}
