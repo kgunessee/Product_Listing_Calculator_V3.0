@@ -179,6 +179,7 @@ header {
   box-shadow: var(--default-box-shadow);
   margin: 1rem 0;
   display: flex;
+  justify-content: space-between;
   align-items: end;
   gap: 2rem;
 
@@ -201,9 +202,23 @@ header {
 }
 
 #settings-buttons button {
-  border: 1px solid var(--mid-blue-accent-color);
+  border: 2px solid var(--mid-blue-accent-color);
   background: #efefef;
   color: var(--default-dark-color);
+  transition: 200ms ease-in-out;
+
+  &:hover {
+    transform: translateY(-10%);
+    background: #d6dadc;
+  }
+
+  &:active {
+    background: #efefef;
+  }
+}
+
+.info-section.active #settings-buttons button {
+  background: var(--mid-blue-accent-color);
 }
 
 /*------------------COST PRICE CALCULATOR SECTION------------------*/
@@ -745,7 +760,7 @@ header {
 }
 
 /*------------------SETTINGS SECTION------------------*/
-#settings-container {
+.info-section {
   position: absolute;
   display: none;
   border-radius: var(--default-container-border-radius);
@@ -755,9 +770,10 @@ header {
   background: #d3d3d3;
   height: var(--settings-height);
   z-index: 5;
+  width: 40%;
 }
 
-#settings-container.active {
+.info-section.active {
   display: block;
 }
 
@@ -772,21 +788,35 @@ header {
   font-weight: 600;
 }
 
-.accordion-header{
+.accordion-header {
   color: #212121;
   background: var(--light-blue-accent-color);
   padding: 1rem;
+  border-radius: var(--default-container-border-radius);
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .accordion-content {
-  max-height: 0;
-  transition: .2s;
+  display: none;
+  transition: 500ms ease-in-out;
   background: #5183a9;
-  overflow: scroll;
-
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 1rem;
 }
 
-.accordion-content.active{
-  max-height: 50rem;
-
+.accordion-content.active {
+  display: block;
+}
+.accordion-content h4,
+.accordion-content ul {
+  margin-bottom: 1rem;
+}
+.price-list li,
+.surcharge-list li {
+  list-style: inside;
+  margin-bottom: 0.5rem;
 }

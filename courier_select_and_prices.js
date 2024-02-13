@@ -59,13 +59,19 @@ const courierPrices = {
   },
 
   surcharges: {
-    "Royal Mail Fuel Surcharge": 1.08, // 8%
-    "Royal Mail Peak Letter Surcharge": 0.05,
-    "Royal Mail Peak Parcel Surcharge": 0.1,
-    "Royal Mail Green Surcharge": 0.02,
-    "DPD Fuel Surcharge": 1.15, // 15%
-    "DPD Drive Shortage Surcharge": 0.25, // 25p surcharge for driver shortage
-    "Parcelforce Fuel Surcharge": 1.15, // 15%
+    royalMail: {
+      "Royal Mail Fuel Surcharge": 1.08, // 8%
+      "Royal Mail Peak Letter Surcharge": 0.05,
+      "Royal Mail Peak Parcel Surcharge": 0.1,
+      "Royal Mail Green Surcharge": 0.02,
+    },
+
+    dpd: {
+      "DPD Fuel Surcharge": 1.15, // 15%
+      "DPD Drive Shortage Surcharge": 0.25,
+    }, // 25p surcharge for driver shortage
+
+    parcelforce: { "Parcelforce Fuel Surcharge": 1.15 }, // 15%,
   },
 
   //--------------Function to select courier - returns total price inc. surcharges and VAT-------------------//
@@ -80,13 +86,13 @@ const courierPrices = {
     let startDate = currentYear + month + day; // Defines the start date
     let endDate = nextYear + month + day; // Defines the end date
 
-    this.surcharges["Royal Mail Peak Letter Surcharge"] = 0.05
+    this.surcharges.royalMail["Royal Mail Peak Letter Surcharge"] = 0.05
       ? currentDate >= startDate && currentDate <= endDate
       : 0;
 
     const rmExtraSurcharges =
-      this.surcharges["Royal Mail Green Surcharge"] +
-      this.surcharges["Royal Mail Peak Letter Surcharge"];
+      this.surcharges.royalMail["Royal Mail Green Surcharge"] +
+      this.surcharges.royalMail["Royal Mail Peak Letter Surcharge"];
 
     let courierResultService = document.querySelector(
       ".courier-result-container h3",
@@ -122,7 +128,7 @@ const courierPrices = {
       case "Parcelforce 24":
         courierResultInput.value = (
           this.parcelforce["Parcelforce 24"] *
-          this.surcharges["Parcelforce Fuel Surcharge"] *
+          this.surcharges.parcelforce["Parcelforce Fuel Surcharge"] *
           vat
         ).toFixed(2);
         courierResultService.innerHTML = "Parcelforce 24";
@@ -130,7 +136,7 @@ const courierPrices = {
       case "Parcelforce 48":
         courierResultInput.value = (
           this.parcelforce["Parcelforce 48"] *
-          this.surcharges["Parcelforce Fuel Surcharge"] *
+          this.surcharges.parcelforce["Parcelforce Fuel Surcharge"] *
           vat
         ).toFixed(2);
         courierResultService.innerHTML = "Parcelforce 48";
@@ -139,7 +145,7 @@ const courierPrices = {
       case "DPD Next-day":
         courierResultInput.value = (
           (this.dpd["DPD Next-day"] * this.surcharges["DPD Fuel Surcharge"] +
-            this.surcharges["DPD Drive Shortage Surcharge"]) *
+            this.surcharges.dpd["DPD Drive Shortage Surcharge"]) *
           vat
         ).toFixed(2);
         courierResultService.innerHTML = "DPD Next-day";
@@ -149,7 +155,7 @@ const courierPrices = {
         console.log("hello");
         courierResultInput.value = (
           (this.royalMail["Royal Mail Tracked 48 Large Letter"] *
-            this.surcharges["Royal Mail Fuel Surcharge"] +
+            this.surcharges.royalMail["Royal Mail Fuel Surcharge"] +
             rmExtraSurcharges) *
           vat
         ).toFixed(2);
@@ -159,7 +165,7 @@ const courierPrices = {
       case "Tracked 48 Parcel":
         courierResultInput.value = (
           (this.royalMail["Royal Mail Tracked 48 Parcel"] *
-            this.surcharges["Royal Mail Fuel Surcharge"] +
+            this.surcharges.royalMail["Royal Mail Fuel Surcharge"] +
             rmExtraSurcharges) *
           vat
         ).toFixed(2);
@@ -169,7 +175,7 @@ const courierPrices = {
       case "Tracked 24 Large Letter":
         courierResultInput.value = (
           (this.royalMail["Royal Mail Tracked 24 Large Letter"] *
-            this.surcharges["Royal Mail Fuel Surcharge"] +
+            this.surcharges.royalMail["Royal Mail Fuel Surcharge"] +
             rmExtraSurcharges) *
           vat
         ).toFixed(2);
@@ -178,7 +184,7 @@ const courierPrices = {
       case "Tracked 24 Parcel":
         courierResultInput.value = (
           (this.royalMail["Royal Mail Tracked 24 Parcel"] *
-            this.surcharges["Royal Mail Fuel Surcharge"] +
+            this.surcharges.royalMail["Royal Mail Fuel Surcharge"] +
             rmExtraSurcharges) *
           vat
         ).toFixed(2);
@@ -188,7 +194,7 @@ const courierPrices = {
       case "STD48 (0-135g)":
         courierResultInput.value = (
           (this.royalMail["Royal Mail Standard 48 Large Letter (0-135g)"] *
-            this.surcharges["Royal Mail Fuel Surcharge"] +
+            this.surcharges.royalMail["Royal Mail Fuel Surcharge"] +
             rmExtraSurcharges) *
           vat
         ).toFixed(2);
@@ -198,7 +204,7 @@ const courierPrices = {
       case "STD48 (136-250g)":
         courierResultInput.value = (
           (this.royalMail["Royal Mail Standard 48 Large Letter (136-250g)"] *
-            this.surcharges["Royal Mail Fuel Surcharge"] +
+            this.surcharges.royalMail["Royal Mail Fuel Surcharge"] +
             rmExtraSurcharges) *
           vat
         ).toFixed(2);
@@ -208,7 +214,7 @@ const courierPrices = {
       case "STD48 (251-500g)":
         courierResultInput.value = (
           (this.royalMail["Royal Mail Standard 48 Large Letter (251-500g)"] *
-            this.surcharges["Royal Mail Fuel Surcharge"] +
+            this.surcharges.royalMail["Royal Mail Fuel Surcharge"] +
             rmExtraSurcharges) *
           vat
         ).toFixed(2);
@@ -218,7 +224,7 @@ const courierPrices = {
       case "STD48 (501-700g)":
         courierResultInput.value = (
           (this.royalMail["Royal Mail Standard 48 Large Letter (501-700g)"] *
-            this.surcharges["Royal Mail Fuel Surcharge"] +
+            this.surcharges.royalMail["Royal Mail Fuel Surcharge"] +
             rmExtraSurcharges) *
           vat
         ).toFixed(2);
@@ -229,7 +235,7 @@ const courierPrices = {
       case "STD24 (0-135g)":
         courierResultInput.value = (
           (this.royalMail["Royal Mail Standard 24 Large Letter (0-135g)"] *
-            this.surcharges["Royal Mail Fuel Surcharge"] +
+            this.surcharges.royalMail["Royal Mail Fuel Surcharge"] +
             rmExtraSurcharges) *
           vat
         ).toFixed(2);
@@ -239,7 +245,7 @@ const courierPrices = {
       case "STD24 (136-250g)":
         courierResultInput.value = (
           (this.royalMail["Royal Mail Standard 24 Large Letter (136-250g)"] *
-            this.surcharges["Royal Mail Fuel Surcharge"] +
+            this.surcharges.royalMail["Royal Mail Fuel Surcharge"] +
             rmExtraSurcharges) *
           vat
         ).toFixed(2);
@@ -249,7 +255,7 @@ const courierPrices = {
       case "STD24 (251-500g)":
         courierResultInput.value = (
           (this.royalMail["Royal Mail Standard 24 Large Letter (251-500g)"] *
-            this.surcharges["Royal Mail Fuel Surcharge"] +
+            this.surcharges.royalMail["Royal Mail Fuel Surcharge"] +
             rmExtraSurcharges) *
           vat
         ).toFixed(2);
@@ -259,7 +265,7 @@ const courierPrices = {
       case "STD24 (501-700g)":
         courierResultInput.value = (
           (this.royalMail["Royal Mail Standard 24 Large Letter (501-700g)"] *
-            this.surcharges["Royal Mail Fuel Surcharge"] +
+            this.surcharges.royalMail["Royal Mail Fuel Surcharge"] +
             rmExtraSurcharges) *
           vat
         ).toFixed(2);
@@ -330,3 +336,97 @@ const openStandard48Menu = () => {
 };
 //-----------------------------------------------------------------------------------------//
 openStandard48Menu(); //Call the function to open the containers on click
+
+// Load Courier Cost Prices
+function loadCourierPrices() {
+  const accordionPriceList = document.querySelectorAll(
+    ".accordion-content .price-list",
+  );
+  const accordionSurcharges = document.querySelectorAll(
+    ".accordion-content .surcharge-list",
+  );
+
+  // Royal Mail
+  for (const [key, value] of Object.entries(
+    courierPrices.surcharges.royalMail,
+  )) {
+    const royalMailSurchargeLi = document.createElement("li");
+    const royalMailSurchargeSpan = document.createElement("span");
+    accordionSurcharges[0].appendChild(royalMailSurchargeLi);
+    royalMailSurchargeLi.innerHTML = `${key}: `;
+    royalMailSurchargeLi.appendChild(royalMailSurchargeSpan);
+    royalMailSurchargeSpan.innerHTML = `£${value.toFixed(2)}`;
+    royalMailSurchargeSpan.style.fontWeight = "bold";
+  }
+
+  for (const [key, value] of Object.entries(courierPrices.royalMail)) {
+    const royalMailLi = document.createElement("li");
+    const royalMailSpan = document.createElement("span");
+
+    accordionPriceList[0].appendChild(royalMailLi);
+    royalMailLi.innerHTML = `${key}: `;
+    royalMailLi.appendChild(royalMailSpan);
+    royalMailSpan.innerHTML = `£${value.toFixed(2)}`;
+    royalMailSpan.style.fontWeight = "bold";
+  }
+
+  // EVRI
+  for (const [key, value] of Object.entries(courierPrices.evri)) {
+    const evriLi = document.createElement("li");
+    const evriSpan = document.createElement("span");
+
+    accordionPriceList[1].appendChild(evriLi);
+    evriLi.innerHTML = `${key}: `;
+    evriLi.appendChild(evriSpan);
+    evriSpan.innerHTML = `£${value.toFixed(2)}`;
+    evriSpan.style.fontWeight = "bold";
+  }
+
+  // DPD
+  for (const [key, value] of Object.entries(courierPrices.surcharges.dpd)) {
+    const dpdSurchargeLi = document.createElement("li");
+    const dpdSurchargeSpan = document.createElement("span");
+    accordionSurcharges[2].appendChild(dpdSurchargeLi);
+    dpdSurchargeLi.innerHTML = `${key}: `;
+    dpdSurchargeLi.appendChild(dpdSurchargeSpan);
+    dpdSurchargeSpan.innerHTML = `£${value.toFixed(2)}`;
+    dpdSurchargeSpan.style.fontWeight = "bold";
+  }
+
+  for (const [key, value] of Object.entries(courierPrices.dpd)) {
+    const dpdLi = document.createElement("li");
+    const dpdSpan = document.createElement("span");
+
+    accordionPriceList[2].appendChild(dpdLi);
+    dpdLi.innerHTML = `${key}: `;
+    dpdLi.appendChild(dpdSpan);
+    dpdSpan.innerHTML = `£${value.toFixed(2)}`;
+    dpdSpan.style.fontWeight = "bold";
+  }
+
+  // Parcelforce
+  for (const [key, value] of Object.entries(
+    courierPrices.surcharges.parcelforce,
+  )) {
+    const parcelforceSurchargeLi = document.createElement("li");
+    const parcelforceSurchargeSpan = document.createElement("span");
+    accordionSurcharges[3].appendChild(parcelforceSurchargeLi);
+    parcelforceSurchargeLi.innerHTML = `${key}: `;
+    parcelforceSurchargeLi.appendChild(parcelforceSurchargeSpan);
+    parcelforceSurchargeSpan.innerHTML = `£${value.toFixed(2)}`;
+    parcelforceSurchargeSpan.style.fontWeight = "bold";
+  }
+
+  for (const [key, value] of Object.entries(courierPrices.parcelforce)) {
+    const parcelforceLi = document.createElement("li");
+    const parcelforceSpan = document.createElement("span");
+
+    accordionPriceList[3].appendChild(parcelforceLi);
+    parcelforceLi.innerHTML = `${key}: `;
+    parcelforceLi.appendChild(parcelforceSpan);
+    parcelforceSpan.innerHTML = `£${value.toFixed(2)}`;
+    parcelforceSpan.style.fontWeight = "bold";
+  }
+}
+
+loadCourierPrices();
