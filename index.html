@@ -27,8 +27,14 @@
           <button class="info-button courier-price-button">
             Settings
           </button>
+          <button class="info-button ebay-table-button">
+            eBay Category Fees
+          </button>
+          <button class="reset-button">
+            Reset
+          </button>
         </div>
-        <section class="info-section">
+        <section class="info-section courier-price-section">
           <div id="accordion-container">
             <div class="accordion-section">
               <h3 class="accordion-header">Royal Mail</h3>
@@ -50,6 +56,7 @@
             <div class="accordion-section">
               <h3 class="accordion-header">DPD</h3>
               <div class="accordion-content">
+                <p class="dpd-pricelist"><a href="Inta DPD Price List.pdf" target="_blank" >Click here to view the full price list including multi-box & international</a></p>
                 <h4>Surcharges</h4>
                 <ul class="surcharge-list"></ul>
                 <h4>Cost Prices</h4>
@@ -89,6 +96,779 @@
             />
           </div>
         </section>
+        <section class="info-section ebay-table">
+          <table>
+            <thead>
+            <tr>
+              <td>Category</td>
+              <td>Category ID</td>
+              <td>Final value fee % + 30p per order</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>
+                <p><strong>Antiques</strong></p>
+              </td>
+              <td>
+                <p>#20081</p>
+              </td>
+              <td>
+                <p>10.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Art</strong>, except subcategories below:</p>
+              </td>
+              <td>
+                <p>#550</p>
+              </td>
+              <td>
+                <p>10.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Art NFTs</li>
+                </ul>
+              </td>
+              <td>
+                <p>#262051</p>
+              </td>
+              <td>
+                <p>5%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Baby</strong></p>
+              </td>
+              <td>
+                <p>#2984</p>
+              </td>
+              <td>
+                <p>10.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Books, Comics &amp; Magazines</strong></p>
+              </td>
+              <td>
+                <p>#267</p>
+              </td>
+              <td>
+                <p>9.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Business, Office &amp; Industrial</strong></p>
+              </td>
+              <td>
+                <p>#12576</p>
+              </td>
+              <td>
+                <p>11.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Cameras &amp; Photography</strong>, except subcategories below:</p>
+              </td>
+              <td>
+                <p>#625</p>
+              </td>
+              <td>
+                <p>9.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Camcorders</li>
+                  <li>Digital Cameras</li>
+                  <li>Film Photography</li>
+                  <li>Lenses &amp; Filters</li>
+                </ul>
+              </td>
+              <td>
+                <p>#11724<br>
+                  #31388<br>
+                  #69323<br>
+                  #78997
+                </p>
+              </td>
+              <td>
+                <ul>
+                  <li>6.9% for the portion of the total amount of the sale up to £1,000 (calculated per item)</li>
+                  <li>3% for the portion of the total amount of the sale above £1,000</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Clothes, Shoes &amp; Accessories</strong>, except subcategories below:</p>
+              </td>
+              <td>
+                <p>#11450</p>
+              </td>
+              <td>
+                <p>11.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Women's Bags &amp; Handbags</li>
+                </ul>
+              </td>
+              <td>
+                <p>#169291</p>
+              </td>
+              <td>
+                <ul>
+                  <li>12.9% for the portion of the total amount of the sale up to £800 (calculated per item)</li>
+                  <li>7% for the portion of the total amount of the sale above £800</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Men &gt; Men's Shoes &gt; <strong>Trainers</strong></li>
+                  <li>Women &gt; Women's Shoes &gt; <strong>Trainers</strong></li>
+                </ul>
+              </td>
+              <td>
+                <p>#15709</p>
+                <p>#95672</p>
+              </td>
+              <td>
+                <p>11.9%</p>
+                <p>&nbsp;</p>
+                <ul>
+                  <li>7% if item selling price* is £100 or more</li>
+                </ul>
+                <p>*The item selling price excludes postage, and any other additional fees or taxes</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Coins</strong></p>
+              </td>
+              <td>
+                <p>#11116</p>
+              </td>
+              <td>
+                <p>10.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Collectables</strong>, except subcategories below:</p>
+              </td>
+              <td>
+                <p>#1</p>
+              </td>
+              <td>
+                <p>10.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Emerging NFTs</li>
+                  <li>Non-Sport Trading Card NFTs</li>
+                </ul>
+              </td>
+              <td>
+                <p>#262050<br>
+                  #262052
+                </p>
+              </td>
+              <td>
+                <p>5%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Computers, Tablets &amp; Networking</strong>, except subcategories below:</p>
+              </td>
+              <td>
+                <p>#58058</p>
+              </td>
+              <td>
+                <p>9.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Desktops &amp; All-In-Ones</li>
+                  <li>Drives, Storage &amp; Blank Media</li>
+                  <li>Enterprise Networking, Servers</li>
+                  <li>Tablets &amp; eBook Readers</li>
+                  <li>Laptops &amp; Netbooks</li>
+                  <li>Printers, Scanners&nbsp;&amp; Supplies</li>
+                </ul>
+              </td>
+              <td>
+                <p>#171957<br>
+                  #165<br>
+                  #175698<br>
+                  #171485<br>
+                  #175672<br>
+                  #171961
+                </p>
+              </td>
+              <td>
+                <ul>
+                  <li>6.9% for the portion of the total amount of the sale up to £1,000 (calculated per item)</li>
+                  <li>3% for the portion of the total amount of the sale above £1,000</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Crafts</strong></p>
+              </td>
+              <td>
+                <p>#14339</p>
+              </td>
+              <td>
+                <p>12.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Dolls &amp; Bears</strong></p>
+              </td>
+              <td>
+                <p>#237</p>
+              </td>
+              <td>
+                <p>10.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Event Tickets</strong></p>
+              </td>
+              <td>
+                <p>#1305</p>
+              </td>
+              <td>
+                <p>12.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Films &amp; TV</strong>, except subcategories below:</p>
+              </td>
+              <td>
+                <p>#11232</p>
+              </td>
+              <td>
+                <p>9.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Film NFTs</li>
+                </ul>
+              </td>
+              <td>
+                <p>#262053</p>
+              </td>
+              <td>
+                <p>5%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Garden &amp; Patio</strong></p>
+              </td>
+              <td>
+                <p>#159912</p>
+              </td>
+              <td>
+                <p>10.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Health &amp; Beauty</strong>, except subcategories below:</p>
+              </td>
+              <td>
+                <p>#26395</p>
+              </td>
+              <td>
+                <p>10.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Hair Extensions &amp; Wigs</li>
+                </ul>
+              </td>
+              <td>
+                <p>#182101</p>
+              </td>
+              <td>
+                <p>11.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Electronic Smoking, Parts &amp; Accessories</li>
+                </ul>
+              </td>
+              <td>
+                <p>#183497</p>
+              </td>
+              <td>
+                <p>12.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Holidays &amp; Travel</strong></p>
+              </td>
+              <td>
+                <p>#3252</p>
+              </td>
+              <td>
+                <ul>
+                  <li>7.9% for the portion of the total amount of the sale up to £650 (calculated per item)</li>
+                  <li>3% for the portion of the total amount of the sale above £650</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Home, Furniture &amp; DIY</strong>, except subcategories below:</p>
+              </td>
+              <td>
+                <p>#11700</p>
+              </td>
+              <td>
+                <ul>
+                  <li>11.9% for the portion of the total amount of the sale up to £500 (calculated per item)</li>
+                  <li>7.9% for the portion of the total amount of the sale above £500</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Appliances</li>
+                  <li>DIY Tools &amp; Workshop Equipment</li>
+                </ul>
+              </td>
+              <td>
+                <p>#20710<br>
+                  #631
+                </p>
+              </td>
+              <td>
+                <ul>
+                  <li>6.9% for the portion of the total amount of the sale up to £400 (calculated per item)</li>
+                  <li>3% for the portion of the total amount of the sale above £400</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Power Strips &amp; Surge Protectors</li>
+                </ul>
+              </td>
+              <td>
+                <p>#67779</p>
+              </td>
+              <td>
+                <ul>
+                  <li>9.9% for the portion of the total amount of the sale up to £250 (calculated per item)</li>
+                  <li>7.9% for the portion of the total amount of the sale above £250</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Furniture</li>
+                  <li>Bath</li>
+                  <li>Other Home Plumbing &amp; Fixtures</li>
+                </ul>
+              </td>
+              <td>
+                <p>#3197<br>
+                  #26677<br>
+                  #3191
+                </p>
+              </td>
+              <td>
+                <ul>
+                  <li>10.9% for the portion of the total amount of the sale up to £500 (calculated per item)</li>
+                  <li>7.9% for the portion of the total amount of the sale above £500 and up to £1,000 (calculated per item)</li>
+                  <li>3% for the portion of the total amount of the sale above £1,000</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Jewellery &amp; Watches</strong>, except subcategories below:</p>
+              </td>
+              <td>
+                <p>#281</p>
+              </td>
+              <td>
+                <ul>
+                  <li>12.9% for the portion of the total amount of the sale up to £450 (calculated per item)</li>
+                  <li>2% for the portion of the total amount of the sale above £450</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Watches, Parts &amp; Accessories</li>
+                </ul>
+              </td>
+              <td>
+                <p>#260324</p>
+              </td>
+              <td>
+                <ul>
+                  <li>12.9% for the portion of the total amount of the sale up to £750 (calculated per item)</li>
+                  <li>3% for the portion of the total amount of the sale above £750</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Mobile Phones &amp; Communication</strong>, except subcategories below:</p>
+              </td>
+              <td>
+                <p>#15032</p>
+              </td>
+              <td>
+                <p>9.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Mobile &amp; Smart Phones</li>
+                </ul>
+              </td>
+              <td>
+                <p>#9355</p>
+              </td>
+              <td>
+                <ul>
+                  <li>6.9% for the portion of the total amount of the sale up to £1,000 (calculated per item)</li>
+                  <li>3% for the portion of the total amount of the sale above £1,000</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Music</strong>, except subcategories below:</p>
+              </td>
+              <td>
+                <p>#11233</p>
+              </td>
+              <td>
+                <p>9.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Music NFTs</li>
+                </ul>
+              </td>
+              <td>
+                <p>#262054</p>
+              </td>
+              <td>
+                <p>5%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Musical Instruments &amp; DJ Equipment</strong></p>
+              </td>
+              <td>
+                <p>#619</p>
+              </td>
+              <td>
+                <p>10.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Pet Supplies</strong></p>
+              </td>
+              <td>
+                <p>#1281</p>
+              </td>
+              <td>
+                <p>12.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Pottery, Ceramics &amp; Glass</strong></p>
+              </td>
+              <td>
+                <p>#870</p>
+              </td>
+              <td>
+                <p>10.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Sound &amp; Vision</strong>, except subcategories below:</p>
+              </td>
+              <td>
+                <p>#293</p>
+              </td>
+              <td>
+                <p>9.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>DVD, Blu-ray &amp; Home Cinema</li>
+                  <li>Headphones</li>
+                  <li>Home Audio &amp; HiFi Separates</li>
+                  <li>Televisions</li>
+                </ul>
+              </td>
+              <td>
+                <p>#32852<br>
+                  #112529<br>
+                  #14969<br>
+                  #11071
+                </p>
+              </td>
+              <td>
+                <ul>
+                  <li>6.9% for the portion of the total amount of the sale up to £1,000 (calculated per item)</li>
+                  <li>3% for the portion of the total amount of the sale above £1,000</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Sporting Goods</strong></p>
+              </td>
+              <td>
+                <p>#888</p>
+              </td>
+              <td>
+                <p>10.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Sports Memorabilia</strong>, except subcategories below:</p>
+              </td>
+              <td>
+                <p>#64482</p>
+              </td>
+              <td>
+                <p>10.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Sport Trading Card NFTs</li>
+                </ul>
+              </td>
+              <td>
+                <p>#262055</p>
+              </td>
+              <td>
+                <p>5%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Stamps</strong></p>
+              </td>
+              <td>
+                <p>#260</p>
+              </td>
+              <td>
+                <p>10.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Toys &amp; Games</strong>, except subcategories below:</p>
+              </td>
+              <td>
+                <p>#220</p>
+              </td>
+              <td>
+                <p>10.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>CCG NFTs</li>
+                </ul>
+              </td>
+              <td>
+                <p>#262056</p>
+              </td>
+              <td>
+                <p>5%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Tents</li>
+                </ul>
+              </td>
+              <td>
+                <p>#117213</p>
+              </td>
+              <td>
+                <ul>
+                  <li>10.9% for the portion of the total amount of the sale up to £250 (calculated per item)</li>
+                  <li>7.9% for the portion of the total amount of the sale above £250</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Vehicle Parts &amp; Accessories</strong>, except subcategories below:</p>
+              </td>
+              <td>
+                <p>#131090</p>
+              </td>
+              <td>
+                <p>8.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Tyres</li>
+                  <li>Tyres</li>
+                </ul>
+              </td>
+              <td>
+                <p>#179680<br>
+                  #124313
+                </p>
+              </td>
+              <td>
+                <ul>
+                  <li>7.9% for the portion of the total amount of the sale up to £250 (calculated per item)</li>
+                  <li>3% for the portion of the total amount of the sale above £250</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>GPS &amp; Sat Nav Devices</li>
+                  <li>Power Tools &amp; Equipment</li>
+                </ul>
+              </td>
+              <td>
+                <p>#139835<br>
+                  #35000
+                </p>
+              </td>
+              <td>
+                <ul>
+                  <li>6.9% for the portion of the total amount of the sale up to £400 (calculated per item)</li>
+                  <li>3% for the portion of the total amount of the sale above £400</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Video Games &amp; Consoles</strong>, except subcategories below:</p>
+              </td>
+              <td>
+                <p>#1249</p>
+              </td>
+              <td>
+                <p>9.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Video Game Consoles</li>
+                </ul>
+              </td>
+              <td>
+                <p>#139971</p>
+              </td>
+              <td>
+                <ul>
+                  <li>6.9% for the portion of the total amount of the sale up to £400 (calculated per item)</li>
+                  <li>2% for the portion of the total amount of the sale above £400</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Wholesale &amp; Job Lots</strong></p>
+              </td>
+              <td>
+                <p>#40005</p>
+              </td>
+              <td>
+                <p>12.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p><strong>Everything Else</strong>, except subcategories below:</p>
+              </td>
+              <td>
+                <p>#99</p>
+              </td>
+              <td>
+                <p>12.9%</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <ul>
+                  <li>Memorials &amp; Funerals</li>
+                </ul>
+              </td>
+              <td>
+                <p>#88739</p>
+              </td>
+              <td>
+                <p><span>11.9%</span></p>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </section>
 
       </header>
       <main>
@@ -100,8 +880,8 @@
               CALCULATE
             </button>
             <div>
-              <h3 class="cost-price-result"></h3>
-              <p class="result-ex-vat"></p>
+              <h3 class=" result cost-price-result"></h3>
+              <p class="result result-ex-vat"></p>
             </div>
           </div>
           <!--          The rest of the calculator underneath the results display-->
@@ -296,15 +1076,15 @@
 
               <div id="third-party-results-section" class="third-party-blocks">
                 <p>Results</p>
-                <p>Category Fee = £<span class="price-breakdown-box"></span></p>
-                <p>Promo Fee = £<span class="price-breakdown-box"></span></p>
+                <p>Category Fee = £<span class="result price-breakdown-box"></span></p>
+                <p>Promo Fee = £<span class="result price-breakdown-box"></span></p>
                 <p>
-                  Final Value Fee = £<span class="price-breakdown-box"></span>
+                  Final Value Fee = £<span class="result price-breakdown-box"></span>
                 </p>
-                <p>Total Fees = £<span class="price-breakdown-box"></span></p>
+                <p>Total Fees = £<span class="result price-breakdown-box"></span></p>
               </div>
             </div>
-            <p id="results-info">.</p>
+            <p id="results-info" class="result">.</p>
           </section>
 
           <!---------------PERCENTAGE CALCULATOR SECTION---------->
@@ -330,9 +1110,9 @@
                 </div>
                 <button class="tools-calc-button percent-calc-button">=</button>
               </div>
-              <p class="tools-result"></p>
-              <p class="tools-result"></p>
-              <p class="tools-result"></p>
+              <p class="result tools-result"></p>
+              <p class="result tools-result"></p>
+              <p class="result tools-result"></p>
             </section>
 
             <!---------------VAT CALCULATOR SECTION----------------->
@@ -346,8 +1126,8 @@
                 </div>
                 <button class="tools-calc-button vat-calc-button">=</button>
               </div>
-              <p class="tools-result"></p>
-              <p class="tools-result"></p>
+              <p class="result tools-result"></p>
+              <p class="result tools-result"></p>
             </section>
           </section>
         </section>

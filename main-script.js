@@ -75,7 +75,7 @@ function morePrices() {
     costPriceCalcContainer.querySelectorAll(".quantity");
   let total = 0;
   morePrices.forEach((price, index) => {
-    if (price.value == "") {
+    if (price.value === "") {
       price.value = 0;
     }
     total += price.valueAsNumber * morePricesQuantity[index].valueAsNumber;
@@ -136,12 +136,12 @@ function addAndRemoveMorePrices() {
     newDiv.className = "more-price-block";
 
     const newPriceInput = document.createElement("input");
-    newPriceInput.className = "price";
+    newPriceInput.className = "price extra-price-box";
     newPriceInput.value = "0";
     newPriceInput.type = "number";
 
     const newQuantityInput = document.createElement("input");
-    newQuantityInput.className = "quantity";
+    newQuantityInput.className = "quantity extra-quantity-box";
     newQuantityInput.value = "1";
     newQuantityInput.type = "number";
 
@@ -208,7 +208,7 @@ function calculatePercent() {
 
   //If there is one or no input boxes filled, do not execute function.
   const noInput = percentInputBox.some((e) => {
-    return e.value == "";
+    return e.value === "";
   });
 
   if (!noInput) {
@@ -359,8 +359,6 @@ function calculateThirdPartyEarnings() {
     totalDifferenceDisplay.style.background = "rgb(141,218,146)";
     totalDifferenceDisplay.style.opacity = "1";
   }
-
-  // totalDifferenceDisplay.innerHTML = totalDifferenceValue;
 }
 
 //--------TOGGLES THE THIRD PARTY OPTION BUTTONS ACTIVE OR NOT-------//
@@ -423,11 +421,23 @@ function presets() {
 presets();
 
 function infoDisplay() {
+  const settingButtons = document.querySelector("#settings-buttons");
   const infoButton = header.querySelectorAll(".info-button");
   const infoSection = header.querySelectorAll(".info-section");
 
+  const removeActive = () => {
+    infoButton.forEach((button) => {
+      button.classList.remove("active");
+    });
+  };
+
   infoButton.forEach((button, i) => {
     button.addEventListener("click", () => {
+      if (!button.classList.contains("active")) {
+        removeActive();
+      }
+      button.classList.toggle("active");
+
       if (infoSection[i].classList.contains("active")) {
         infoSection[i].classList.remove("active");
       } else {
@@ -452,3 +462,20 @@ function openAccordions() {
   });
 }
 openAccordions();
+
+function reset() {
+  const resetButton = header.querySelector(".reset-button");
+  const input = document.querySelectorAll("input");
+  const result = document.querySelectorAll(".result");
+
+  resetButton.addEventListener("click", () => {
+    input.forEach((input) => {
+      input.value = input.defaultValue;
+    });
+
+    result.forEach((result) => {
+      result.innerHTML = "";
+    });
+  });
+}
+reset();

@@ -11,7 +11,7 @@
   /*DEFAULT COLOURS*/
   --default-dark-color: #212121;
   --default-light-color: rgb(233, 255, 249);
-  --light-blue-accent-color: #a4a4a4;
+  --light-blue-accent-color: #82d7ea;
   --mid-blue-accent-color: #467599;
   --dark-blue-accent-color: #1d232c;
   --red-accent-color: #d64045;
@@ -19,7 +19,7 @@
   /*DEFAULT HOVER COLOURS*/
   --hover-default-dark-color: #1e1e1e;
   --hover-default-light-color: #c6d3ce;
-  --hover-light-blue-accent-color: #aee7ea;
+  --hover-light-blue-accent-color: #98dfe7;
   --hover-mid-blue-accent-color: #5183a9;
   --hover-dark-blue-accent-color: #28406b;
   --hover-red-accent-color: #de5157;
@@ -201,7 +201,7 @@ header {
   color: var(--default-dark-color);
 }
 
-#settings-buttons button {
+.info-button {
   border: 2px solid var(--mid-blue-accent-color);
   background: #efefef;
   color: var(--default-dark-color);
@@ -215,8 +215,22 @@ header {
   }
 }
 
-.info-section.active #settings-buttons button {
+.info-button.active {
   background: var(--mid-blue-accent-color);
+  color: var(--default-light-color);
+}
+
+.reset-button{
+  background: var(--red-accent-color);
+  border: 2px solid var(--hover-red-accent-color);
+
+  &:hover {
+    background: var(--hover-red-accent-color);
+  }
+
+  &:active {
+    background: var(--red-accent-color);
+  }
 }
 
 /*------------------COST PRICE CALCULATOR SECTION------------------*/
@@ -239,7 +253,6 @@ header {
   align-items: end;
   position: relative;
 
-  /*justify-content: space-between;*/
 }
 
 .input-block input {
@@ -543,9 +556,6 @@ header {
   margin-bottom: 1rem;
 }
 
-#third-party-results-section {
-  grid-column: 3 / 4;
-}
 #third-party-results-section p,
 #results-info {
   padding: 0.4rem;
@@ -611,6 +621,7 @@ header {
   font-weight: 500;
   gap: 0.5rem;
 }
+
 #third-party-options-container label,
 #third-party-options-container input {
   color: var(--default-light-color);
@@ -710,12 +721,21 @@ header {
   box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.2);
   top: calc(100% + 1rem);
   right: 0;
-  background: #dedede;
+  background: #dcdcdc;
   height: var(--settings-height);
   z-index: 5;
-  width: 40%;
   padding: 1rem;
   overflow-y: scroll;
+}
+
+
+
+.courier-price-section, .settings-section{
+  width: 40%;
+}
+
+.ebay-table{
+width: 100%;
 }
 
 .info-section.active {
@@ -745,22 +765,21 @@ header {
 
 .accordion-header {
   color: var(--default-dark-color);
-  background: var(--light-blue-accent-color);
+  background: #a8a8a8;
   font-weight: 600;
   padding: 1rem;
   border-radius: var(--default-container-border-radius);
-  /*margin-bottom: 1rem;*/
-  box-shadow: var(--default-box-shadow);
 
   &:hover {
     cursor: pointer;
+    background: #b9b9b9;
   }
 }
 
 .accordion-content {
   display: none;
   transition: 500ms ease-in-out;
-  background: #c2c2c2;
+  background: #ececec;
 
   overflow-x: hidden;
   overflow-y: scroll;
@@ -790,4 +809,113 @@ header {
 .accordion-content ul,
 .settings-section label {
   color: var(--default-dark-color);
+}
+
+.dpd-pricelist{
+ margin-bottom: 1rem;
+
+  & a{
+    color: var(--mid-blue-accent-color);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+}
+
+
+/*------------------EBAY TABLE SECTION------------------*/
+
+.ebay-table table {
+  width: 100%;
+  border-collapse: separate;
+  margin-bottom: 2em;
+  border-radius: 0.3em;
+  border: 1px solid rgb(107, 107, 107);
+}
+
+.ebay-table th,
+.ebay-table td {
+  color: var(--default-dark-color);
+  font-size: 0.95em;
+  padding: 0.3em;
+  /*border-left: 1px solid rgba(19, 19, 19, 0.66);*/
+  /*border-top: 1px solid rgb(19, 19, 19);*/
+}
+
+.ebay-table th {
+  border-top: none;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.ebay-table thead td {
+  font-weight: 700;
+  font-size: 1.1em;
+  color: var(--default-dark-color);
+}
+
+.ebay-table td:first-child,
+.ebay-table th:first-child {
+  border-left: none;
+}
+
+.ebay-table table,
+.ebay-table tr,
+.ebay-table th,
+.ebay-table td {
+  color: var(--default-dark-color);
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.ebay-table thead {
+  margin-bottom: 1em;
+
+}
+
+.ebay-table li {
+  margin-bottom: 0.5em;
+  margin-left: 2em;
+  color: var(--default-dark-color);
+
+  &:first-child{
+    margin-top: 0.5em;
+    font-size: 1em;
+    color: var(--default-dark-color);
+  }
+}
+
+.ebay-table p {
+  margin-left: 0.5em;
+  text-align: left;
+  font-size: 1em;
+  color: var(--default-dark-color);
+}
+
+.ebay-table strong{
+  color: var(--default-dark-color);
+}
+
+@media screen and (max-width: 1800px) {
+  /*main{*/
+  /*  flex-direction:column;*/
+  /*}*/
+
+  #third-party-fees-section{
+    flex-direction: column;
+  }
+
+  #input-and-result-grid {
+    & div:first-child {
+      grid-column: 1 / 2;
+    }
+
+    & div:last-child {
+      grid-column: 2 / 4;
+    }
+  }
+
+  #third-party-options-container {
+    flex-direction: column;
+    align-items: baseline;
+  }
 }
