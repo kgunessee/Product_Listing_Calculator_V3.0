@@ -18,12 +18,14 @@ function setModuleHeight() {
     .querySelector("#cost-price-calc-container")
     .getBoundingClientRect().height;
 
-  const settingsContainer = document.querySelector("#settings-container");
+  const infoContainer = document.querySelectorAll(".info-section");
 
-  settingsContainer.style.setProperty(
-    "--settings-height",
-    `${costPriceCalcHeight}px`,
-  );
+  infoContainer.forEach((container) => {
+    container.style.setProperty(
+      "--settings-height",
+      `${costPriceCalcHeight}px`,
+    );
+  });
 
   const toolsContainer = document.querySelector("#tools-container");
   toolsContainer.style.setProperty("--max-height", `${costPriceCalcHeight}px`);
@@ -130,20 +132,20 @@ function addAndRemoveMorePrices() {
   );
 
   addButton.addEventListener("click", () => {
-    const newDiv = costPriceCalcContainer.createElement("div");
+    const newDiv = document.createElement("div");
     newDiv.className = "more-price-block";
 
-    const newPriceInput = costPriceCalcContainer.createElement("input");
+    const newPriceInput = document.createElement("input");
     newPriceInput.className = "price";
     newPriceInput.value = "0";
     newPriceInput.type = "number";
 
-    const newQuantityInput = costPriceCalcContainer.createElement("input");
+    const newQuantityInput = document.createElement("input");
     newQuantityInput.className = "quantity";
     newQuantityInput.value = "1";
     newQuantityInput.type = "number";
 
-    const removeButton = costPriceCalcContainer.createElement("button");
+    const removeButton = document.createElement("button");
     removeButton.className = "remove-button";
     removeButton.innerHTML = "Delete";
 
@@ -262,6 +264,11 @@ function promoFees(price) {
   return (price * promoFeeInput.valueAsNumber) / 100;
 }
 
+// Returns the percentage between two numbers. In this case, it's the percentage change between the cost price and ebay final price.
+function calcPercentageChange(costPrice, sellPrice) {
+  return (((sellPrice - costPrice) / costPrice) * 100).toFixed(2);
+}
+
 // --------FUNCTION TO CALCULATE THE THIRD PARTY TOTAL EARNINGS--------//
 function calculateThirdPartyEarnings() {
   const thirdPartyCostInput =
@@ -334,18 +341,22 @@ function calculateThirdPartyEarnings() {
     thirdPartyContainer.querySelector("#results-info");
   const totalDifferenceValue =
     total - costPriceCalculate(morePrices(), courierResultInput);
+  const percentageDifference = calcPercentageChange(
+    costPriceCalculate(morePrices(), courierResultInput),
+    total,
+  );
 
   if (totalDifferenceValue < 0) {
-    totalDifferenceDisplay.innerHTML = `There is a negative difference of -£${totalDifferenceValue.toFixed(
+    totalDifferenceDisplay.innerHTML = `There is a negative difference of £${totalDifferenceValue.toFixed(
       2,
-    )}`;
-    totalDifferenceDisplay.style.background = "rgb(218,86,86)";
+    )} (${percentageDifference}%)`;
+    totalDifferenceDisplay.style.background = "rgb(206,128,128)";
     totalDifferenceDisplay.style.opacity = "1";
   } else {
     totalDifferenceDisplay.innerHTML = `There is a positive difference of £${totalDifferenceValue.toFixed(
       2,
-    )}`;
-    totalDifferenceDisplay.style.background = "rgb(65,208,77)";
+    )} (+${percentageDifference}%)`;
+    totalDifferenceDisplay.style.background = "rgb(141,218,146)";
     totalDifferenceDisplay.style.opacity = "1";
   }
 
