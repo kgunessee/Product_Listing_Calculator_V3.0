@@ -421,7 +421,6 @@ function presets() {
 presets();
 
 function infoDisplay() {
-  const settingButtons = document.querySelector("#settings-buttons");
   const infoButton = header.querySelectorAll(".info-button");
   const infoSection = header.querySelectorAll(".info-section");
 
