@@ -422,6 +422,7 @@ presets();
 
 function infoDisplay() {
   const infoButton = header.querySelectorAll(".info-button");
+  const mobileInfoButton = header.querySelectorAll(".mobile-info-button");
   const infoSection = header.querySelectorAll(".info-section");
 
   const removeActive = () => {
@@ -431,6 +432,23 @@ function infoDisplay() {
   };
 
   infoButton.forEach((button, i) => {
+    button.addEventListener("click", () => {
+      if (!button.classList.contains("active")) {
+        removeActive();
+      }
+      button.classList.toggle("active");
+
+      if (infoSection[i].classList.contains("active")) {
+        infoSection[i].classList.remove("active");
+      } else {
+        infoSection.forEach((section) => {
+          section.classList.remove("active");
+        });
+        infoSection[i].classList.add("active");
+      }
+    });
+  });
+  mobileInfoButton.forEach((button, i) => {
     button.addEventListener("click", () => {
       if (!button.classList.contains("active")) {
         removeActive();
@@ -464,10 +482,11 @@ openAccordions();
 
 function reset() {
   const resetButton = header.querySelector(".reset-button");
+  const mobileResetButton = header.querySelector(".mobile-reset-button");
   const input = document.querySelectorAll("input");
   const result = document.querySelectorAll(".result");
 
-  resetButton.addEventListener("click", () => {
+  const reset = () => {
     input.forEach((input) => {
       input.value = input.defaultValue;
     });
@@ -475,6 +494,9 @@ function reset() {
     result.forEach((result) => {
       result.innerHTML = "";
     });
-  });
+  };
+
+  resetButton.addEventListener("click", reset);
+  mobileResetButton.addEventListener("click", reset);
 }
 reset();

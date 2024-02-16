@@ -233,6 +233,10 @@ header {
   }
 }
 
+#mobile-settings-buttons {
+  display: none;
+}
+
 /*------------------COST PRICE CALCULATOR SECTION------------------*/
 
 /*---USER INPUTS---*/
@@ -977,9 +981,10 @@ header {
     min-width: 0;
   }
 
-  /*#presets button {*/
-  /*  width: fit-content;*/
-  /*}*/
+  .info-section {
+    width: 100%;
+    height: 100vh;
+  }
 }
 
 @media screen and (max-width: 1120px) {
@@ -997,12 +1002,65 @@ header {
     display: none;
   }
 
+  #mobile-settings-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.2rem;
+  }
+
   .mobile-info-button,
   .mobile-reset-button {
     color: var(--default-dark-color);
     border: 1px solid black;
     border-radius: var(--default-button-border-radius);
     padding: 0.1rem;
+  }
+  .mobile-info-button {
     background: var(--light-blue-accent-color);
+  }
+  .mobile-reset-button {
+    background: var(--red-accent-color);
+  }
+}
+
+@media screen and (max-width: 585px) {
+  #cost-price-calc-container,
+  #third-party-price-calc-container {
+    padding: 1rem;
+  }
+
+  .courier-menu,
+  .rm48-services-container,
+  .rm24-services-container {
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  }
+
+  .rm48-services-container,
+  .rm24-services-container {
+    grid-column: 1 / 3;
+  }
+
+  .courier-btn {
+    width: 100%;
+  }
+
+  #mobile-settings-buttons {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  #title-and-version-info h1 {
+    margin-bottom: 1rem;
+  }
+
+  #input-and-result-grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #tools-container {
+    display: flex;
+    flex-direction: column;
   }
 }
