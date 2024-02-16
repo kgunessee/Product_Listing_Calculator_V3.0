@@ -429,6 +429,10 @@ function infoDisplay() {
     infoButton.forEach((button) => {
       button.classList.remove("active");
     });
+
+    mobileInfoButton.forEach((button) => {
+      button.classList.remove("active");
+    });
   };
 
   infoButton.forEach((button, i) => {
@@ -448,6 +452,7 @@ function infoDisplay() {
       }
     });
   });
+
   mobileInfoButton.forEach((button, i) => {
     button.addEventListener("click", () => {
       if (!button.classList.contains("active")) {
@@ -500,3 +505,24 @@ function reset() {
   mobileResetButton.addEventListener("click", reset);
 }
 reset();
+
+//
+const btn = document.querySelector(".add-extra-price-button");
+function addPriceBtnText(e) {
+  if (e.target.innerWidth <= 585) {
+    btn.innerHTML = "+";
+  } else {
+    btn.innerHTML = "Add Price";
+  }
+}
+window.addEventListener("resize", (e) => {
+  addPriceBtnText(e);
+});
+
+window.onload = () => {
+  if (window.innerWidth <= 585) {
+    btn.innerHTML = "+";
+  } else {
+    btn.innerHTML = "Add Price";
+  }
+};

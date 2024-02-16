@@ -893,6 +893,82 @@ header {
   color: var(--default-dark-color);
 }
 
+.easter-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1rem;
+  aspect-ratio: 1 / 1;
+  background: #efefef;
+}
+
+.darken-bg {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.79);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  display: none;
+}
+
+.password-section {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  z-index: 11;
+  display: none;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.password-section.active {
+  display: flex;
+}
+
+.darken-bg.active {
+  display: block;
+}
+
+.pw-input {
+  background: #d7d7d7;
+  color: #1e1e1e;
+  font-size: 1.6rem;
+}
+
+.access-btn {
+  background: #468346;
+  width: 100%;
+}
+
+.graveyard-link {
+  color: #ffffff;
+  font-size: 1.6rem;
+  display: none;
+}
+
+.graveyard-link.active {
+  display: block;
+}
+
+.close-button {
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: fit-content;
+  min-width: 0;
+  background: black;
+}
+
+.error-message {
+  color: #d64045;
+}
+
+/*------------------------------MEDIA QUERIES-----------------------------*/
+
 @media screen and (max-width: 1800px) {
   /*main{*/
   /*  flex-direction:column;*/
@@ -1021,6 +1097,13 @@ header {
   .mobile-reset-button {
     background: var(--red-accent-color);
   }
+
+  .mobile-info-button.active {
+    background: #fff;
+  }
+  .mobile-reset-button.active {
+    background: var(--red-accent-color);
+  }
 }
 
 @media screen and (max-width: 585px) {
@@ -1062,5 +1145,11 @@ header {
   #tools-container {
     display: flex;
     flex-direction: column;
+  }
+
+  #third-party-title-presets {
+    flex-direction: column;
+    align-items: baseline;
+    gap: 1rem;
   }
 }
