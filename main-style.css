@@ -9,20 +9,25 @@
   --h4: 1.2rem;
 
   /*DEFAULT COLOURS*/
-  --default-dark-color: #212121;
-  --default-light-color: rgb(233, 255, 249);
-  --light-blue-accent-color: #82d7ea;
-  --mid-blue-accent-color: #467599;
+  --default-dark-color: #2b2d42ff;
+  --default-light-color: #edf2f4;
+  --light-blue-accent-color: #7ad0dc;
+  --mid-blue-accent-color: #8d99ae;
+  --cool-grey-color: #4d5464;
   --dark-blue-accent-color: #1d232c;
-  --red-accent-color: #d64045;
+  --red-accent-color: #c4565b;
+  --calculate-button: #69b66b;
+  --positive-green: #67b276;
+  --bg-color: #efefef;
 
   /*DEFAULT HOVER COLOURS*/
   --hover-default-dark-color: #1e1e1e;
   --hover-default-light-color: #c6d3ce;
   --hover-light-blue-accent-color: #98dfe7;
-  --hover-mid-blue-accent-color: #5183a9;
+  --hover-mid-blue-accent-color: #9da8bd;
   --hover-dark-blue-accent-color: #28406b;
   --hover-red-accent-color: #de5157;
+  --calculate-button-hover: #75be77;
 
   --default-container-border-radius: 0.5rem;
   --default-button-border-radius: 5px;
@@ -43,15 +48,15 @@
 
 .material-symbols-outlined {
   font-variation-settings:
-    "FILL" 0,
-    "wght" 400,
+    "FILL" 1,
+    "wght" 200,
     "GRAD" 0,
     "opsz" 24;
 }
 
 body {
   overflow-y: scroll;
-  background: #efefef;
+  background: var(--bg-color);
 }
 
 #listing-calculator-all {
@@ -143,16 +148,16 @@ h2 {
 }
 
 .calculate-button {
-  background: #68b668;
+  background: var(--calculate-button);
   height: 100%;
   font-size: var(--h4);
 
   &:hover {
-    background: #71bd71;
+    background: var(--calculate-button-hover);
   }
 
   &:active {
-    background: #68b668;
+    background: var(--calculate-button);
   }
 }
 
@@ -231,6 +236,10 @@ header {
   &:active {
     background: var(--red-accent-color);
   }
+}
+
+#mobile-settings-buttons {
+  display: none;
 }
 
 #mobile-settings-buttons {
@@ -521,7 +530,7 @@ header {
 /*------------------THIRD PARTY CALCULATOR SECTION------------------*/
 
 #third-party-price-calc-container {
-  background: var(--default-dark-color);
+  background: var(--cool-grey-color);
   overflow: hidden;
 }
 
@@ -537,8 +546,9 @@ header {
 }
 
 #presets button {
-  color: var(--default-light-color);
+  color: var(--default-dark-color);
   background: var(--mid-blue-accent-color);
+  font-weight: 600;
   width: 5rem;
   padding: 0.3rem;
   min-width: 0;
@@ -566,9 +576,10 @@ header {
 }
 
 #third-party-results-section p {
-  background: rgba(184, 218, 225, 0.8);
+  background: var(--cool-grey-color);
   margin-bottom: 1rem;
-  color: var(--default-dark-color);
+  color: var(--default-light-color);
+  /*font-weight: 600;*/
   /*width: 10rem;*/
 
   &:first-child {
@@ -578,14 +589,20 @@ header {
     padding: 0;
   }
   &:nth-child(5) {
-    background: rgba(108, 169, 182, 0.8);
-    /*color: white;*/
-    font-weight: 600;
-  }
-
-  & span {
+    background: var(--mid-blue-accent-color);
     color: var(--default-dark-color);
+    font-weight: 600;
+    /*padding: 0.4rem;*/
   }
+}
+
+.result {
+  color: var(--default-light-color);
+}
+
+.total-fees {
+  color: var(--default-dark-color);
+  font-weight: 600;
 }
 
 #input-and-result-grid {
@@ -603,7 +620,7 @@ header {
 .third-party-blocks {
   position: relative;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: var(--default-button-border-radius);
   padding: 0.5rem;
 }
@@ -635,7 +652,8 @@ header {
 }
 
 .third-party-option-btn.active {
-  background: #5183a9;
+  background: var(--light-blue-accent-color);
+  color: var(--default-dark-color);
 }
 
 /*----------------------TOOLS SECTION-------------------------------*/
@@ -673,6 +691,27 @@ header {
     margin: 0.5rem 0;
   }
 }
+.perc-calc-price-flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  position: relative;
+}
+
+.copy-cost-tooltip{
+  color: #1e1e1e ;
+  background: #1e1e1e;
+
+}
+.copy-from-calc-btn{
+  background: var(--mid-blue-accent-color);
+  min-width: 0;
+  font-size: 0.5rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  padding: 0;
+  margin-bottom: 0.5rem;
+}
 
 .tool-input {
   display: flex;
@@ -688,15 +727,15 @@ header {
 }
 
 .tools-calc-button {
-  background: #68b668;
+  background: var(--calculate-button);
   min-width: 0;
 
   &:hover {
-    background: #71bd71;
+    background: var(--calculate-button-hover);
   }
 
   &:active {
-    background: #68b668;
+    background: var(--calculate-button);
   }
 }
 
@@ -724,7 +763,7 @@ header {
   box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.2);
   top: calc(100% + 1rem);
   right: 0;
-  background: #dcdcdc;
+  background: var(--bg-color);
   height: var(--settings-height);
   z-index: 5;
   padding: 1rem;
@@ -751,7 +790,7 @@ header {
 .vat-input-box,
 .trs-input-box {
   width: 5rem;
-  background: #bebebe;
+  background: var(--light-blue-accent-color);
   font-size: 1rem;
   text-align: center;
   color: var(--default-dark-color);
@@ -765,22 +804,22 @@ header {
 }
 
 .accordion-header {
-  color: var(--default-dark-color);
-  background: #a8a8a8;
+  color: var(--default-light-color);
+  background: var(--mid-blue-accent-color);
   font-weight: 600;
   padding: 1rem;
   border-radius: var(--default-container-border-radius);
 
   &:hover {
     cursor: pointer;
-    background: #b9b9b9;
+    background: var(--hover-mid-blue-accent-color);
   }
 }
 
 .accordion-content {
   display: none;
   transition: 500ms ease-in-out;
-  background: #ececec;
+  background: var(--default-light-color);
 
   overflow-x: hidden;
   overflow-y: scroll;
@@ -863,7 +902,7 @@ header {
 .ebay-table th,
 .ebay-table td {
   color: var(--default-dark-color);
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(141, 153, 174, 0.1);
 }
 
 .ebay-table thead {
@@ -893,79 +932,6 @@ header {
   color: var(--default-dark-color);
 }
 
-.easter-btn {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 1rem;
-  aspect-ratio: 1 / 1;
-  background: #efefef;
-}
-
-.darken-bg {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.79);
-  backdrop-filter: blur(10px);
-  z-index: 10;
-  display: none;
-}
-
-.password-section {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  z-index: 11;
-  display: none;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-}
-
-.password-section.active {
-  display: flex;
-}
-
-.darken-bg.active {
-  display: block;
-}
-
-.pw-input {
-  background: #d7d7d7;
-  color: #1e1e1e;
-  font-size: 1.6rem;
-}
-
-.access-btn {
-  background: #468346;
-  width: 100%;
-}
-
-.graveyard-link {
-  color: #ffffff;
-  font-size: 1.6rem;
-  display: none;
-}
-
-.graveyard-link.active {
-  display: block;
-}
-
-.close-button {
-  position: absolute;
-  top: -50%;
-  right: -20%;
-  width: fit-content;
-  min-width: 0;
-  background: black;
-}
-
-.error-message {
-  color: #d64045;
-}
 
 /*------------------------------MEDIA QUERIES-----------------------------*/
 
@@ -1084,22 +1050,40 @@ header {
     gap: 0.2rem;
   }
 
+  #mobile-settings-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+
   .mobile-info-button,
   .mobile-reset-button {
-    color: var(--default-dark-color);
-    border: 1px solid black;
+    color: var(--default-light-color);
     border-radius: var(--default-button-border-radius);
-    padding: 0.1rem;
+    padding: 0.2rem;
   }
   .mobile-info-button {
     background: var(--light-blue-accent-color);
+
+    &:hover{
+      background: var(--hover-light-blue-accent-color);
+      cursor: pointer;
+    }
   }
   .mobile-reset-button {
     background: var(--red-accent-color);
+
+    &:hover{
+      background: var(--hover-red-accent-color);
+      cursor: pointer;
+
+    }
   }
 
   .mobile-info-button.active {
-    background: #fff;
+    background: var(--default-light-color);
+    color: var(--default-dark-color);
+    border: 1px solid var(--mid-blue-accent-color);
+    margin: -1px;
   }
   .mobile-reset-button.active {
     background: var(--red-accent-color);

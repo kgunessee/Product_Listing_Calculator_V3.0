@@ -32,3 +32,16 @@ const checkPassword = (entry) => {
 submitBtn.addEventListener("click", () => {
   checkPassword(pwInput.value);
 });
+
+const vatBox = document.querySelector(".vat-input-box");
+const red = document.querySelector(".red-overlay");
+const beaver = document.querySelector(".beavers");
+vatBox.addEventListener("input", () => {
+  beaver.classList.remove("active");
+  red.classList.remove("active");
+  // beaver.classList.remove("active")
+  if (vatBox.value === "02476369898") {
+    beaver.classList.add("active");
+    red.classList.add("active");
+  }
+});

@@ -93,9 +93,13 @@ function morePrices() {
         ".more-prices-button",
       );
       if (isMoreThanZero) {
-        showPricesButton.style.background = "#467599";
+        // showPricesButton.style.background = "#7ad0dc";
+        showPricesButton.style.border = "2px solid #7ad0dc";
+        showPricesButton.style.margin = "-2px";
       } else {
-        showPricesButton.style.background = "rgba(255, 255, 255, 0.1)";
+        // showPricesButton.style.background = "rgba(255, 255, 255, 0.1)";
+        showPricesButton.style.border = "none";
+        showPricesButton.style.margin = "0";
       }
     });
   });
@@ -356,7 +360,7 @@ function calculateThirdPartyEarnings() {
     totalDifferenceDisplay.innerHTML = `There is a positive difference of £${totalDifferenceValue.toFixed(
       2,
     )} (+${percentageDifference}%)`;
-    totalDifferenceDisplay.style.background = "rgb(141,218,146)";
+    totalDifferenceDisplay.style.background = "#93e095";
     totalDifferenceDisplay.style.opacity = "1";
   }
 }
@@ -435,25 +439,7 @@ function infoDisplay() {
     });
   };
 
-  infoButton.forEach((button, i) => {
-    button.addEventListener("click", () => {
-      if (!button.classList.contains("active")) {
-        removeActive();
-      }
-      button.classList.toggle("active");
-
-      if (infoSection[i].classList.contains("active")) {
-        infoSection[i].classList.remove("active");
-      } else {
-        infoSection.forEach((section) => {
-          section.classList.remove("active");
-        });
-        infoSection[i].classList.add("active");
-      }
-    });
-  });
-
-  mobileInfoButton.forEach((button, i) => {
+  [...infoButton, ...mobileInfoButton].forEach((button, i) => {
     button.addEventListener("click", () => {
       if (!button.classList.contains("active")) {
         removeActive();
